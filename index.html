@@ -1,484 +1,1102 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>مجتبی مهیاری | IT Infrastructure & Network Specialist</title>
+    <title>
+        مجتبی مهیاری | IT Infrastructure & Network Specialist
+    </title>
 
-    <meta name="description"
-          content="مجتبی مهیاری | متخصص زیرساخت فناوری اطلاعات، شبکه، دیتاسنتر، مجازی‌سازی، VDI، Disaster Recovery، امنیت شبکه و مانیتورینگ">
+    <meta
+        name="description"
+        content="مجتبی مهیاری | متخصص زیرساخت فناوری اطلاعات، شبکه، دیتاسنتر، مجازی‌سازی، VDI، Disaster Recovery، امنیت شبکه و مانیتورینگ"
+    >
 
-    <meta name="keywords"
-          content="مجتبی مهیاری, شبکه, زیرساخت, دیتاسنتر, VMware, VDI, SRM, Disaster Recovery, FortiGate, Cisco, Zabbix, Splunk, Wazuh">
+    <meta
+        name="keywords"
+        content="مجتبی مهیاری, شبکه, زیرساخت, دیتاسنتر, VMware, VDI, SRM, Disaster Recovery, FortiGate, Cisco, Zabbix, Splunk, Wazuh"
+    >
 
-    <meta name="author" content="Mojtaba Mahyari">
+    <meta
+        name="author"
+        content="Mojtaba Mahyari"
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
+
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
     <style>
 
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
         :root {
-            --bg-main: #040a10;
-            --bg-card: rgba(10, 24, 36, 0.72);
-            --bg-card-2: rgba(9, 20, 30, 0.58);
+
+            --bg-main: #03090f;
+
+            --bg-card:
+                rgba(10, 23, 34, 0.72);
+
+            --bg-card-soft:
+                rgba(8, 20, 30, 0.58);
 
             --cyan: #16b9ff;
-            --cyan-soft: rgba(22,185,255,.15);
+
+            --cyan-light: #43c9ff;
+
+            --cyan-soft:
+                rgba(22, 185, 255, .12);
 
             --text-main: #edf7ff;
-            --text-soft: #afc1cc;
-            --text-muted: #80939f;
 
-            --border: rgba(255,255,255,.075);
-            --border-cyan: rgba(22,185,255,.24);
+            --text-soft: #adc0ca;
+
+            --text-muted: #81949f;
+
+            --border:
+                rgba(255,255,255,.075);
+
+            --border-cyan:
+                rgba(22,185,255,.24);
 
             --shadow:
                 0 20px 60px rgba(0,0,0,.22);
         }
 
 
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
+
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
+
         }
 
 
         html {
+
             scroll-behavior: smooth;
+
         }
 
 
         body {
-            font-family: "Vazirmatn", sans-serif;
+
+            font-family:
+                "Vazirmatn",
+                sans-serif;
 
             background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(22,185,255,.10),
-                    transparent 28%
-                ),
-                radial-gradient(
-                    circle at 92% 18%,
-                    rgba(0,130,255,.07),
-                    transparent 25%
-                ),
-                radial-gradient(
-                    circle at 80% 85%,
-                    rgba(22,185,255,.055),
-                    transparent 30%
-                ),
-                var(--bg-main);
+                #03090f;
 
-            color: var(--text-main);
-            line-height: 1.9;
+            color:
+                var(--text-main);
 
-            overflow-x: hidden;
-        }
+            line-height:
+                1.9;
 
+            overflow-x:
+                hidden;
 
-        /* -------------------------------------------------
-           TECHNOLOGY BACKGROUND
-        ------------------------------------------------- */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-
-            background-image:
-                linear-gradient(
-                    rgba(22,185,255,.032) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(22,185,255,.032) 1px,
-                    transparent 1px
-                );
-
-            background-size: 55px 55px;
-
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 95%
-                );
-
-            pointer-events: none;
-            z-index: -4;
-        }
-
-
-        body::after {
-            content: "";
-            position: fixed;
-
-            width: 500px;
-            height: 500px;
-
-            right: -220px;
-            top: 180px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(22,185,255,.10),
-                    transparent 65%
-                );
-
-            filter: blur(20px);
-
-            pointer-events: none;
-            z-index: -3;
         }
 
 
         a {
-            color: inherit;
-            text-decoration: none;
+
+            color:
+                inherit;
+
+            text-decoration:
+                none;
+
         }
 
 
         img {
-            max-width: 100%;
+
+            max-width:
+                100%;
+
         }
 
 
         .container {
-            width: min(1180px, 92%);
-            margin: auto;
+
+            width:
+                min(1180px, 92%);
+
+            margin:
+                auto;
+
         }
 
 
-        /* -------------------------------------------------
-           NAVBAR
-        ------------------------------------------------- */
+        /* =====================================================
+           TECHNOLOGY BACKGROUND
+        ===================================================== */
 
-        nav {
-            position: fixed;
+        .tech-background {
 
-            top: 0;
-            right: 0;
-            left: 0;
+            position:
+                fixed;
 
-            z-index: 1000;
+            inset:
+                0;
 
-            backdrop-filter: blur(18px);
+            z-index:
+                0;
+
+            pointer-events:
+                none;
+
+            overflow:
+                hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 12% 18%,
+                    rgba(22,185,255,.11),
+                    transparent 27%
+                ),
+
+                radial-gradient(
+                    circle at 88% 16%,
+                    rgba(0,120,255,.075),
+                    transparent 24%
+                ),
+
+                radial-gradient(
+                    circle at 77% 82%,
+                    rgba(22,185,255,.055),
+                    transparent 31%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #03090f 0%,
+                    #06121b 48%,
+                    #03090f 100%
+                );
+
+        }
+
+
+        /* Grid */
+
+        .tech-grid {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(22,185,255,.045) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(22,185,255,.045) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                52px 52px;
+
+            opacity:
+                .58;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black 0%,
+                    black 48%,
+                    transparent 100%
+                );
+
+        }
+
+
+        /* Glow */
+
+        .data-center-glow {
+
+            position:
+                absolute;
+
+            border-radius:
+                50%;
+
+            filter:
+                blur(38px);
+
+        }
+
+
+        .glow-1 {
+
+            width:
+                560px;
+
+            height:
+                560px;
+
+            top:
+                80px;
+
+            right:
+                -260px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(22,185,255,.12),
+                    transparent 68%
+                );
+
+        }
+
+
+        .glow-2 {
+
+            width:
+                500px;
+
+            height:
+                500px;
+
+            left:
+                -260px;
+
+            bottom:
+                -220px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,128,255,.09),
+                    transparent 68%
+                );
+
+        }
+
+
+        /* Circuit lines */
+
+        .circuit {
+
+            position:
+                absolute;
+
+            width:
+                410px;
+
+            height:
+                230px;
+
+            opacity:
+                .34;
+
+        }
+
+
+        .circuit::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            top:
+                38%;
+
+            width:
+                100%;
+
+            height:
+                1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(22,185,255,.42),
+                    transparent
+                );
+
+        }
+
+
+        .circuit::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                0;
+
+            left:
+                50%;
+
+            width:
+                1px;
+
+            height:
+                100%;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(3,10,16,.90),
-                    rgba(3,10,16,.68)
+                    transparent,
+                    rgba(22,185,255,.30),
+                    transparent
                 );
+
+        }
+
+
+        .circuit span {
+
+            position:
+                absolute;
+
+            width:
+                9px;
+
+            height:
+                9px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--cyan);
+
+            box-shadow:
+                0 0 14px rgba(22,185,255,.95);
+
+            animation:
+                networkPulse 3s infinite ease-in-out;
+
+        }
+
+
+        .circuit-1 {
+
+            top:
+                16%;
+
+            right:
+                2%;
+
+        }
+
+
+        .circuit-1 span:nth-child(1) {
+
+            left:
+                13%;
+
+            top:
+                34%;
+
+        }
+
+
+        .circuit-1 span:nth-child(2) {
+
+            left:
+                49%;
+
+            top:
+                34%;
+
+            animation-delay:
+                .7s;
+
+        }
+
+
+        .circuit-1 span:nth-child(3) {
+
+            right:
+                9%;
+
+            top:
+                34%;
+
+            animation-delay:
+                1.4s;
+
+        }
+
+
+        .circuit-2 {
+
+            left:
+                1%;
+
+            top:
+                54%;
+
+            transform:
+                rotate(-8deg);
+
+        }
+
+
+        .circuit-2 span:nth-child(1) {
+
+            left:
+                12%;
+
+            top:
+                34%;
+
+        }
+
+
+        .circuit-2 span:nth-child(2) {
+
+            left:
+                49%;
+
+            top:
+                34%;
+
+            animation-delay:
+                .8s;
+
+        }
+
+
+        .circuit-2 span:nth-child(3) {
+
+            right:
+                8%;
+
+            top:
+                34%;
+
+            animation-delay:
+                1.6s;
+
+        }
+
+
+        .circuit-3 {
+
+            right:
+                17%;
+
+            bottom:
+                2%;
+
+            transform:
+                rotate(7deg);
+
+            opacity:
+                .22;
+
+        }
+
+
+        .circuit-3 span:nth-child(1) {
+
+            left:
+                12%;
+
+            top:
+                34%;
+
+        }
+
+
+        .circuit-3 span:nth-child(2) {
+
+            left:
+                50%;
+
+            top:
+                34%;
+
+            animation-delay:
+                .9s;
+
+        }
+
+
+        .circuit-3 span:nth-child(3) {
+
+            right:
+                11%;
+
+            top:
+                34%;
+
+            animation-delay:
+                1.8s;
+
+        }
+
+
+        /* Network Nodes */
+
+        .network-node {
+
+            position:
+                absolute;
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--cyan);
+
+            box-shadow:
+                0 0 16px rgba(22,185,255,.95);
+
+            opacity:
+                .7;
+
+        }
+
+
+        .node-1 {
+
+            right:
+                10%;
+
+            top:
+                41%;
+
+        }
+
+
+        .node-2 {
+
+            right:
+                30%;
+
+            top:
+                25%;
+
+        }
+
+
+        .node-3 {
+
+            left:
+                17%;
+
+            top:
+                70%;
+
+        }
+
+
+        .node-4 {
+
+            left:
+                38%;
+
+            top:
+                18%;
+
+        }
+
+
+        @keyframes networkPulse {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(.7);
+
+                opacity:
+                    .40;
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.35);
+
+                opacity:
+                    1;
+
+            }
+
+        }
+
+
+        /* Content above background */
+
+        nav,
+        main,
+        footer {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        nav {
+
+            position:
+                fixed;
+
+            top:
+                0;
+
+            right:
+                0;
+
+            left:
+                0;
+
+            z-index:
+                1000;
+
+            backdrop-filter:
+                blur(18px);
+
+            background:
+                rgba(3,9,15,.78);
 
             border-bottom:
                 1px solid rgba(255,255,255,.055);
+
         }
 
 
         .nav-inner {
-            min-height: 74px;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            min-height:
+                74px;
 
-            gap: 25px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                25px;
+
         }
 
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
 
-            color: var(--cyan);
+            display:
+                flex;
 
-            font-size: 19px;
-            font-weight: 800;
+            align-items:
+                center;
 
-            letter-spacing: .8px;
+            gap:
+                10px;
+
+            color:
+                var(--cyan);
+
+            font-size:
+                19px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .8px;
+
         }
 
 
         .logo::before {
-            content: "◈";
 
-            font-size: 17px;
+            content:
+                "◈";
+
+            font-size:
+                17px;
 
             text-shadow:
-                0 0 18px rgba(22,185,255,.65);
+                0 0 18px rgba(22,185,255,.7);
+
         }
 
 
         .nav-links {
-            display: flex;
-            gap: 23px;
-            list-style: none;
+
+            display:
+                flex;
+
+            gap:
+                23px;
+
+            list-style:
+                none;
+
         }
 
 
         .nav-links a {
-            color: #a9bbc5;
-            font-size: 13px;
 
-            transition: .25s;
+            color:
+                #a8bac5;
+
+            font-size:
+                13px;
+
+            transition:
+                .25s;
+
         }
 
 
         .nav-links a:hover {
-            color: #fff;
+
+            color:
+                #ffffff;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            HERO
-        ------------------------------------------------- */
+        ===================================================== */
 
         .hero {
-            position: relative;
 
-            min-height: 100vh;
+            min-height:
+                100vh;
 
-            padding-top: 130px;
+            padding-top:
+                135px;
 
-            display: flex;
-            align-items: center;
+            display:
+                flex;
 
-            isolation: isolate;
-        }
+            align-items:
+                center;
 
+            position:
+                relative;
 
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 650px;
-            height: 650px;
-
-            right: -180px;
-            top: 70px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(22,185,255,.085),
-                    transparent 62%
-                );
-
-            filter: blur(15px);
-
-            z-index: -2;
-        }
-
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-
-            left: -260px;
-            bottom: -260px;
-
-            width: 620px;
-            height: 620px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0,114,255,.065),
-                    transparent 65%
-                );
-
-            filter: blur(20px);
-
-            z-index: -2;
         }
 
 
         .hero-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 1.16fr .84fr;
 
-            gap: 65px;
+            gap:
+                65px;
 
-            align-items: center;
+            align-items:
+                center;
+
         }
 
 
         .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
 
-            color: var(--cyan);
+            display:
+                inline-flex;
 
-            font-size: 12px;
-            font-weight: 800;
+            align-items:
+                center;
 
-            letter-spacing: 2px;
+            gap:
+                10px;
 
-            margin-bottom: 19px;
+            color:
+                var(--cyan);
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                2px;
+
+            margin-bottom:
+                18px;
+
         }
 
 
         .eyebrow::before {
-            content: "";
 
-            width: 28px;
-            height: 1px;
+            content:
+                "";
 
-            background: var(--cyan);
+            width:
+                28px;
+
+            height:
+                1px;
+
+            background:
+                var(--cyan);
 
             box-shadow:
-                0 0 10px rgba(22,185,255,.65);
+                0 0 12px rgba(22,185,255,.8);
+
         }
 
 
         .hero h1 {
-            font-size: clamp(44px, 6vw, 76px);
 
-            line-height: 1.12;
+            font-size:
+                clamp(44px, 6vw, 76px);
 
-            font-weight: 800;
+            line-height:
+                1.12;
 
-            letter-spacing: -.7px;
+            font-weight:
+                800;
 
-            margin-bottom: 13px;
+            letter-spacing:
+                -.8px;
+
+            margin-bottom:
+                13px;
+
         }
 
 
         .hero h2 {
+
             font-size:
                 clamp(20px, 3vw, 30px);
 
-            color: #a7bdc9;
+            color:
+                #a8bdc9;
 
-            font-weight: 500;
+            font-weight:
+                500;
 
-            margin-bottom: 21px;
+            margin-bottom:
+                21px;
+
         }
 
 
         .hero p {
-            max-width: 720px;
 
-            color: #8fa4b0;
+            max-width:
+                720px;
 
-            font-size: 16px;
+            color:
+                #8ea3af;
+
+            font-size:
+                16px;
+
         }
 
 
         .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
 
-            gap: 13px;
+            display:
+                flex;
 
-            margin-top: 30px;
+            flex-wrap:
+                wrap;
+
+            gap:
+                13px;
+
+            margin-top:
+                30px;
+
         }
 
 
         .btn {
-            min-height: 49px;
 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            min-height:
+                49px;
 
-            padding: 0 22px;
+            display:
+                inline-flex;
 
-            border-radius: 13px;
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                0 22px;
+
+            border-radius:
+                13px;
+
+            font-family:
+                inherit;
+
+            font-weight:
+                700;
 
             border:
                 1px solid rgba(22,185,255,.30);
 
-            font-family: inherit;
-            font-weight: 700;
-
-            cursor: pointer;
+            cursor:
+                pointer;
 
             transition:
                 transform .25s,
                 box-shadow .25s,
-                border-color .25s,
-                background .25s;
+                background .25s,
+                border-color .25s;
+
         }
 
 
         .btn-primary {
-            color: #041019;
+
+            color:
+                #041019;
 
             background:
                 linear-gradient(
                     135deg,
-                    #16b9ff,
-                    #43c9ff
+                    var(--cyan),
+                    var(--cyan-light)
                 );
 
             box-shadow:
-                0 10px 30px rgba(22,185,255,.13);
+                0 10px 30px rgba(22,185,255,.14);
+
         }
 
 
         .btn-primary:hover {
-            transform: translateY(-2px);
+
+            transform:
+                translateY(-2px);
 
             box-shadow:
-                0 15px 35px rgba(22,185,255,.22);
+                0 15px 35px rgba(22,185,255,.24);
+
         }
 
 
         .btn-secondary {
-            color: #d8e8ef;
+
+            color:
+                #d7e7ee;
 
             background:
                 rgba(255,255,255,.025);
+
         }
 
 
         .btn-secondary:hover {
+
             border-color:
                 rgba(22,185,255,.45);
 
             background:
                 rgba(22,185,255,.045);
+
         }
 
 
-        /* HERO PHOTO */
+        /* =====================================================
+           HERO VISUAL
+        ===================================================== */
 
         .hero-visual {
-            position: relative;
+
+            position:
+                relative;
+
         }
 
 
         .hero-card {
-            position: relative;
 
-            padding: 14px;
+            position:
+                relative;
 
-            border-radius: 31px;
+            padding:
+                14px;
+
+            border-radius:
+                31px;
 
             background:
                 linear-gradient(
@@ -490,181 +1108,276 @@
             border:
                 1px solid rgba(255,255,255,.08);
 
-            box-shadow: var(--shadow);
+            box-shadow:
+                var(--shadow);
 
-            overflow: visible;
         }
 
 
         .hero-card::before {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            inset: -1px;
+            position:
+                absolute;
 
-            border-radius: 31px;
+            inset:
+                -1px;
+
+            border-radius:
+                31px;
 
             background:
                 linear-gradient(
                     135deg,
                     rgba(22,185,255,.28),
-                    transparent 38%,
+                    transparent 40%,
                     transparent 70%,
                     rgba(22,185,255,.08)
                 );
 
-            z-index: -1;
+            z-index:
+                -1;
+
         }
 
 
         .hero-card img {
-            width: 100%;
 
-            aspect-ratio: 1 / 1;
+            width:
+                100%;
 
-            object-fit: cover;
+            aspect-ratio:
+                1 / 1;
 
-            display: block;
+            object-fit:
+                cover;
 
-            border-radius: 23px;
+            display:
+                block;
 
-            background: #091722;
+            border-radius:
+                23px;
+
+            background:
+                #081722;
+
         }
 
 
         .hero-photo-overlay {
-            position: absolute;
 
-            inset: 14px;
+            position:
+                absolute;
 
-            border-radius: 23px;
+            inset:
+                14px;
+
+            border-radius:
+                23px;
 
             background:
                 linear-gradient(
                     180deg,
-                    transparent 70%,
-                    rgba(1,8,14,.34)
+                    transparent 65%,
+                    rgba(0,0,0,.32)
                 );
 
-            pointer-events: none;
+            pointer-events:
+                none;
+
         }
 
 
         .experience-badge {
-            position: absolute;
 
-            bottom: 30px;
-            right: -23px;
+            position:
+                absolute;
+
+            right:
+                -23px;
+
+            bottom:
+                30px;
 
             padding:
                 10px 16px;
 
-            border-radius: 13px;
+            border-radius:
+                13px;
 
             background:
-                rgba(5,16,24,.92);
+                rgba(4,15,23,.94);
 
             border:
                 1px solid rgba(22,185,255,.28);
 
-            color: #16b9ff;
+            color:
+                var(--cyan);
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
             box-shadow:
-                0 15px 40px rgba(0,0,0,.35);
+                0 15px 40px rgba(0,0,0,.38);
+
         }
 
 
-        /* mini network diagram */
+        /* Small Network Orbit */
 
         .network-orbit {
-            position: absolute;
 
-            top: -25px;
-            left: -30px;
+            position:
+                absolute;
 
-            width: 125px;
-            height: 125px;
+            top:
+                -25px;
 
-            opacity: .8;
-            pointer-events: none;
-        }
+            left:
+                -30px;
 
+            width:
+                125px;
 
-        .network-orbit::before,
-        .network-orbit::after {
-            content: "";
+            height:
+                125px;
 
-            position: absolute;
+            opacity:
+                .80;
 
-            border: 1px solid
-                rgba(22,185,255,.20);
+            pointer-events:
+                none;
 
-            border-radius: 50%;
         }
 
 
         .network-orbit::before {
-            inset: 11px;
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                11px;
+
+            border:
+                1px solid rgba(22,185,255,.20);
+
+            border-radius:
+                50%;
+
         }
 
 
         .network-orbit::after {
-            inset: 27px;
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                27px;
+
+            border:
+                1px solid rgba(22,185,255,.16);
+
+            border-radius:
+                50%;
+
         }
 
 
         .orbit-dot {
-            position: absolute;
 
-            width: 7px;
-            height: 7px;
+            position:
+                absolute;
 
-            border-radius: 50%;
+            width:
+                7px;
 
-            background: #16b9ff;
+            height:
+                7px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--cyan);
 
             box-shadow:
-                0 0 13px #16b9ff;
+                0 0 13px var(--cyan);
+
         }
 
 
         .orbit-dot:nth-child(1) {
-            top: 12px;
-            left: 48px;
+
+            top:
+                12px;
+
+            left:
+                48px;
+
         }
 
 
         .orbit-dot:nth-child(2) {
-            top: 58px;
-            right: 8px;
+
+            top:
+                58px;
+
+            right:
+                8px;
+
         }
 
 
         .orbit-dot:nth-child(3) {
-            bottom: 8px;
-            left: 34px;
+
+            bottom:
+                8px;
+
+            left:
+                34px;
+
         }
 
 
         .orbit-dot:nth-child(4) {
-            top: 56px;
-            left: 14px;
+
+            top:
+                56px;
+
+            left:
+                14px;
+
         }
 
 
+        /* AI */
+
         .ai-highlight {
-            margin-top: 22px;
 
-            padding: 17px 19px;
+            margin-top:
+                22px;
 
-            border-radius: 17px;
+            padding:
+                17px 19px;
+
+            border-radius:
+                17px;
 
             border:
                 1px solid rgba(22,185,255,.18);
@@ -676,98 +1389,142 @@
                     rgba(255,255,255,.018)
                 );
 
-            backdrop-filter: blur(8px);
+            backdrop-filter:
+                blur(8px);
+
         }
 
 
         .ai-highlight strong {
-            display: block;
 
-            color: var(--cyan);
+            display:
+                block;
 
-            font-size: 13px;
+            color:
+                var(--cyan);
 
-            margin-bottom: 5px;
+            font-size:
+                13px;
+
+            margin-bottom:
+                5px;
+
         }
 
 
         .ai-highlight span {
-            color: #b2c4cf;
 
-            font-size: 13px;
+            color:
+                #b0c2cd;
+
+            font-size:
+                13px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            SECTIONS
-        ------------------------------------------------- */
+        ===================================================== */
 
         section {
-            position: relative;
 
-            padding: 105px 0;
+            position:
+                relative;
+
+            padding:
+                105px 0;
+
         }
 
 
         .section-head {
-            margin-bottom: 43px;
+
+            margin-bottom:
+                43px;
+
         }
 
 
         .section-label {
-            color: var(--cyan);
 
-            font-size: 11px;
+            color:
+                var(--cyan);
 
-            font-weight: 800;
+            font-size:
+                11px;
 
-            letter-spacing: 1.6px;
+            font-weight:
+                800;
 
-            margin-bottom: 7px;
+            letter-spacing:
+                1.6px;
+
+            margin-bottom:
+                7px;
+
         }
 
 
         .section-title {
+
             font-size:
                 clamp(28px, 4vw, 42px);
 
-            line-height: 1.25;
+            line-height:
+                1.25;
 
-            font-weight: 800;
+            font-weight:
+                800;
+
         }
 
 
         .section-desc {
-            margin-top: 11px;
 
-            max-width: 780px;
+            margin-top:
+                11px;
 
-            color: #879aa5;
+            max-width:
+                780px;
 
-            font-size: 14px;
+            color:
+                #879aa5;
+
+            font-size:
+                14px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            STATS
-        ------------------------------------------------- */
+        ===================================================== */
 
         .stats {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 17px;
+            gap:
+                17px;
+
         }
 
 
         .stat {
-            position: relative;
 
-            padding: 27px;
+            position:
+                relative;
 
-            border-radius: 20px;
+            padding:
+                27px;
+
+            border-radius:
+                20px;
 
             background:
                 linear-gradient(
@@ -776,72 +1533,104 @@
                     rgba(255,255,255,.015)
                 );
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-            overflow: hidden;
+            overflow:
+                hidden;
+
         }
 
 
         .stat::after {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            width: 90px;
-            height: 90px;
+            position:
+                absolute;
 
-            left: -40px;
-            bottom: -42px;
+            width:
+                100px;
 
-            border-radius: 50%;
+            height:
+                100px;
+
+            left:
+                -45px;
+
+            bottom:
+                -45px;
+
+            border-radius:
+                50%;
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(22,185,255,.12),
+                    rgba(22,185,255,.13),
                     transparent 65%
                 );
+
         }
 
 
         .stat strong {
-            display: block;
 
-            color: var(--cyan);
+            display:
+                block;
 
-            font-size: 34px;
+            color:
+                var(--cyan);
 
-            line-height: 1.2;
+            font-size:
+                34px;
 
-            margin-bottom: 5px;
+            line-height:
+                1.2;
+
+            margin-bottom:
+                5px;
+
         }
 
 
         .stat span {
-            color: #91a4af;
 
-            font-size: 13px;
+            color:
+                #91a4af;
+
+            font-size:
+                13px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            ABOUT
-        ------------------------------------------------- */
+        ===================================================== */
 
         .about-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap: 20px;
+            gap:
+                20px;
+
         }
 
 
         .about-card {
-            padding: 30px;
 
-            border-radius: 22px;
+            padding:
+                30px;
+
+            border-radius:
+                22px;
 
             background:
                 rgba(255,255,255,.024);
@@ -851,43 +1640,60 @@
 
             box-shadow:
                 0 15px 50px rgba(0,0,0,.10);
+
         }
 
 
         .about-card h3 {
-            font-size: 19px;
 
-            margin-bottom: 12px;
+            font-size:
+                19px;
+
+            margin-bottom:
+                12px;
+
         }
 
 
         .about-card p {
-            color: #91a5b1;
 
-            font-size: 14px;
+            color:
+                #91a5b1;
+
+            font-size:
+                14px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            SKILLS
-        ------------------------------------------------- */
+        ===================================================== */
 
         .skills-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 15px;
+            gap:
+                15px;
+
         }
 
 
         .skill {
-            min-height: 160px;
 
-            padding: 23px;
+            min-height:
+                160px;
 
-            border-radius: 19px;
+            padding:
+                23px;
+
+            border-radius:
+                19px;
 
             background:
                 linear-gradient(
@@ -903,35 +1709,48 @@
                 transform .25s,
                 border-color .25s,
                 background .25s;
+
         }
 
 
         .skill:hover {
-            transform: translateY(-3px);
+
+            transform:
+                translateY(-3px);
 
             border-color:
                 rgba(22,185,255,.20);
 
             background:
                 rgba(22,185,255,.035);
+
         }
 
 
         .skill h3 {
-            font-size: 16px;
 
-            margin-bottom: 8px;
+            font-size:
+                16px;
+
+            margin-bottom:
+                8px;
+
         }
 
 
         .skill p {
-            color: #899ca8;
 
-            font-size: 13px;
+            color:
+                #899ca8;
+
+            font-size:
+                13px;
+
         }
 
 
         .skill-ai {
+
             border-color:
                 rgba(22,185,255,.25);
 
@@ -941,33 +1760,47 @@
                     rgba(22,185,255,.07),
                     rgba(255,255,255,.018)
                 );
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            TIMELINE
-        ------------------------------------------------- */
+        ===================================================== */
 
         .timeline {
-            position: relative;
 
-            display: grid;
+            position:
+                relative;
 
-            gap: 21px;
+            display:
+                grid;
+
+            gap:
+                21px;
+
         }
 
 
         .timeline::before {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            top: 0;
-            bottom: 0;
+            position:
+                absolute;
 
-            right: 9px;
+            top:
+                0;
 
-            width: 1px;
+            bottom:
+                0;
+
+            right:
+                9px;
+
+            width:
+                1px;
 
             background:
                 linear-gradient(
@@ -975,91 +1808,132 @@
                     rgba(22,185,255,.33),
                     rgba(22,185,255,.035)
                 );
+
         }
 
 
         .timeline-item {
-            position: relative;
 
-            padding-right: 37px;
+            position:
+                relative;
+
+            padding-right:
+                37px;
+
         }
 
 
         .timeline-dot {
-            position: absolute;
 
-            top: 10px;
-            right: 3px;
+            position:
+                absolute;
 
-            width: 14px;
-            height: 14px;
+            top:
+                10px;
 
-            border-radius: 50%;
+            right:
+                3px;
 
-            background: var(--cyan);
+            width:
+                14px;
+
+            height:
+                14px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--cyan);
 
             box-shadow:
                 0 0 0 6px rgba(22,185,255,.08),
                 0 0 18px rgba(22,185,255,.35);
+
         }
 
 
         .timeline-card {
-            padding: 26px;
 
-            border-radius: 20px;
+            padding:
+                26px;
+
+            border-radius:
+                20px;
 
             background:
                 rgba(255,255,255,.023);
 
             border:
                 1px solid var(--border);
+
         }
 
 
         .timeline-card h3 {
-            font-size: 18px;
 
-            margin-bottom: 4px;
+            font-size:
+                18px;
+
+            margin-bottom:
+                4px;
+
         }
 
 
         .timeline-role {
-            color: var(--cyan);
 
-            font-size: 13px;
+            color:
+                var(--cyan);
 
-            margin-bottom: 9px;
+            font-size:
+                13px;
+
+            margin-bottom:
+                9px;
+
         }
 
 
         .timeline-card p {
-            color: #8da1ac;
 
-            font-size: 13px;
+            color:
+                #8da1ac;
+
+            font-size:
+                13px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            PROJECTS
-        ------------------------------------------------- */
+        ===================================================== */
 
         .projects-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 16px;
+            gap:
+                16px;
+
         }
 
 
         .project {
-            padding: 23px;
 
-            min-height: 190px;
+            padding:
+                23px;
 
-            border-radius: 20px;
+            min-height:
+                190px;
+
+            border-radius:
+                20px;
 
             background:
                 linear-gradient(
@@ -1074,50 +1948,73 @@
             transition:
                 transform .25s,
                 border-color .25s;
+
         }
 
 
         .project:hover {
-            transform: translateY(-4px);
+
+            transform:
+                translateY(-4px);
 
             border-color:
                 rgba(22,185,255,.20);
+
         }
 
 
         .project-number {
-            color: var(--cyan);
 
-            font-size: 10px;
+            color:
+                var(--cyan);
 
-            font-weight: 800;
+            font-size:
+                10px;
 
-            letter-spacing: 1.6px;
+            font-weight:
+                800;
 
-            margin-bottom: 10px;
+            letter-spacing:
+                1.6px;
+
+            margin-bottom:
+                10px;
+
         }
 
 
         .project h3 {
-            font-size: 17px;
 
-            margin-bottom: 9px;
+            font-size:
+                17px;
+
+            margin-bottom:
+                9px;
+
         }
 
 
         .project p {
-            color: #879aa5;
 
-            font-size: 13px;
+            color:
+                #879aa5;
+
+            font-size:
+                13px;
+
         }
 
 
         .project-ai {
-            grid-column: span 3;
 
-            min-height: auto;
+            grid-column:
+                span 3;
 
-            padding: 29px;
+            min-height:
+                auto;
+
+            padding:
+                29px;
 
             background:
                 linear-gradient(
@@ -1129,34 +2026,42 @@
             border-color:
                 rgba(22,185,255,.25);
 
-            box-shadow:
-                0 15px 50px
-                rgba(22,185,255,.035);
         }
 
 
         .project-ai h3 {
-            font-size: 21px;
+
+            font-size:
+                21px;
+
         }
 
 
-        /* -------------------------------------------------
-           TECHNOLOGIES
-        ------------------------------------------------- */
+        /* =====================================================
+           TECHNOLOGY
+        ===================================================== */
 
         .tech-list {
-            display: flex;
 
-            flex-wrap: wrap;
+            display:
+                flex;
 
-            gap: 9px;
+            flex-wrap:
+                wrap;
+
+            gap:
+                9px;
+
         }
 
 
         .tech {
-            padding: 8px 13px;
 
-            border-radius: 999px;
+            padding:
+                8px 13px;
+
+            border-radius:
+                999px;
 
             background:
                 rgba(255,255,255,.026);
@@ -1164,58 +2069,73 @@
             border:
                 1px solid rgba(255,255,255,.06);
 
-            color: #b6c8d2;
+            color:
+                #b6c8d2;
 
-            font-size: 12px;
+            font-size:
+                12px;
 
             transition:
                 border-color .25s,
                 color .25s,
                 background .25s;
+
         }
 
 
         .tech:hover {
-            color: #fff;
+
+            color:
+                #ffffff;
 
             border-color:
                 rgba(22,185,255,.24);
 
             background:
                 rgba(22,185,255,.035);
+
         }
 
 
-        /* -------------------------------------------------
-           REQUEST FORM
-        ------------------------------------------------- */
+        /* =====================================================
+           REQUEST SECTION
+        ===================================================== */
 
         .request-section {
+
             background:
                 linear-gradient(
                     180deg,
                     transparent,
-                    rgba(22,185,255,.022),
+                    rgba(22,185,255,.025),
                     transparent
                 );
+
         }
 
 
         .request-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 .74fr 1.26fr;
 
-            gap: 22px;
+            gap:
+                22px;
+
         }
 
 
         .request-info,
         .request-form-card {
-            padding: 29px;
 
-            border-radius: 24px;
+            padding:
+                29px;
+
+            border-radius:
+                24px;
 
             background:
                 linear-gradient(
@@ -1226,36 +2146,53 @@
 
             border:
                 1px solid var(--border);
+
         }
 
 
         .request-info h3 {
-            font-size: 24px;
 
-            margin-bottom: 13px;
+            font-size:
+                24px;
+
+            margin-bottom:
+                13px;
+
         }
 
 
         .request-info p {
-            color: #8ea1ac;
 
-            font-size: 14px;
+            color:
+                #8ea1ac;
+
+            font-size:
+                14px;
+
         }
 
 
         .request-points {
-            display: grid;
 
-            gap: 10px;
+            display:
+                grid;
 
-            margin-top: 23px;
+            gap:
+                10px;
+
+            margin-top:
+                23px;
+
         }
 
 
         .request-point {
-            padding: 13px 14px;
 
-            border-radius: 13px;
+            padding:
+                13px 14px;
+
+            border-radius:
+                13px;
 
             background:
                 rgba(22,185,255,.025);
@@ -1263,47 +2200,69 @@
             border:
                 1px solid rgba(22,185,255,.075);
 
-            color: #b8cad4;
+            color:
+                #b8cad4;
 
-            font-size: 13px;
+            font-size:
+                13px;
+
         }
 
 
         .form-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap: 15px;
+            gap:
+                15px;
+
         }
 
 
         .form-group {
-            display: flex;
 
-            flex-direction: column;
+            display:
+                flex;
 
-            gap: 7px;
+            flex-direction:
+                column;
+
+            gap:
+                7px;
+
         }
 
 
         .form-group.full {
-            grid-column: span 2;
+
+            grid-column:
+                span 2;
+
         }
 
 
         .form-group label {
-            color: #bfd0d9;
 
-            font-size: 12px;
+            color:
+                #bfd0d9;
 
-            font-weight: 600;
+            font-size:
+                12px;
+
+            font-weight:
+                600;
+
         }
 
 
         .form-control {
-            width: 100%;
+
+            width:
+                100%;
 
             border:
                 1px solid rgba(255,255,255,.08);
@@ -1311,104 +2270,150 @@
             background:
                 rgba(5,15,23,.82);
 
-            color: #edf7ff;
+            color:
+                #edf7ff;
 
-            border-radius: 12px;
+            border-radius:
+                12px;
 
-            padding: 12px 13px;
+            padding:
+                12px 13px;
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            outline: none;
+            outline:
+                none;
 
             transition:
                 border-color .2s,
                 box-shadow .2s;
+
         }
 
 
         .form-control::placeholder {
-            color: #657984;
+
+            color:
+                #657984;
+
         }
 
 
         .form-control:focus {
+
             border-color:
                 rgba(22,185,255,.40);
 
             box-shadow:
                 0 0 0 3px
                 rgba(22,185,255,.055);
+
         }
 
 
         select.form-control {
-            cursor: pointer;
+
+            cursor:
+                pointer;
+
         }
 
 
         textarea.form-control {
-            min-height: 140px;
 
-            resize: vertical;
+            min-height:
+                140px;
+
+            resize:
+                vertical;
+
         }
 
 
         .form-submit {
-            margin-top: 16px;
 
-            display: flex;
+            margin-top:
+                16px;
 
-            align-items: center;
+            display:
+                flex;
 
-            gap: 13px;
+            align-items:
+                center;
 
-            flex-wrap: wrap;
+            gap:
+                13px;
+
+            flex-wrap:
+                wrap;
+
         }
 
 
         .form-message {
-            min-height: 27px;
 
-            font-size: 12px;
+            min-height:
+                27px;
+
+            font-size:
+                12px;
+
         }
 
 
         .form-message.success {
-            color: #54d89a;
+
+            color:
+                #54d89a;
+
         }
 
 
         .form-message.error {
-            color: #ff7b83;
+
+            color:
+                #ff7b83;
+
         }
 
 
         .honeypot {
-            display: none !important;
+
+            display:
+                none !important;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            CONTACT
-        ------------------------------------------------- */
+        ===================================================== */
 
         .contact-grid {
-            display: grid;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 16px;
+            gap:
+                16px;
+
         }
 
 
         .contact-card {
-            padding: 24px;
 
-            border-radius: 19px;
+            padding:
+                24px;
+
+            border-radius:
+                19px;
 
             background:
                 rgba(255,255,255,.023);
@@ -1419,105 +2424,148 @@
             transition:
                 transform .25s,
                 border-color .25s;
+
         }
 
 
         .contact-card:hover {
-            transform: translateY(-3px);
+
+            transform:
+                translateY(-3px);
 
             border-color:
                 rgba(22,185,255,.18);
+
         }
 
 
         .contact-card span {
-            display: block;
 
-            color: #718591;
+            display:
+                block;
 
-            font-size: 11px;
+            color:
+                #718591;
 
-            margin-bottom: 4px;
+            font-size:
+                11px;
+
+            margin-bottom:
+                4px;
+
         }
 
 
         .contact-card a,
         .contact-card strong {
-            color: #deedf4;
 
-            word-break: break-word;
+            color:
+                #deedf4;
 
-            font-size: 14px;
+            word-break:
+                break-word;
+
+            font-size:
+                14px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            FOOTER
-        ------------------------------------------------- */
+        ===================================================== */
 
         footer {
+
             border-top:
                 1px solid rgba(255,255,255,.055);
 
-            padding: 29px 0;
+            padding:
+                29px 0;
 
-            text-align: center;
+            text-align:
+                center;
 
-            color: #647780;
+            color:
+                #647780;
 
-            font-size: 12px;
+            font-size:
+                12px;
+
         }
 
 
-        /* -------------------------------------------------
+        /* =====================================================
            RESPONSIVE
-        ------------------------------------------------- */
+        ===================================================== */
 
         @media (max-width: 980px) {
 
             .hero-grid,
             .request-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
 
             .hero {
-                padding-top: 110px;
+
+                padding-top:
+                    110px;
+
             }
 
 
             .hero-card {
-                max-width: 500px;
 
-                margin: 20px auto 0;
+                max-width:
+                    500px;
+
+                margin:
+                    20px auto 0;
+
             }
 
 
             .stats {
+
                 grid-template-columns:
                     repeat(2, 1fr);
+
             }
 
 
             .skills-grid {
+
                 grid-template-columns:
                     repeat(2, 1fr);
+
             }
 
 
             .projects-grid {
+
                 grid-template-columns:
                     repeat(2, 1fr);
+
             }
 
 
             .project-ai {
-                grid-column: span 2;
+
+                grid-column:
+                    span 2;
+
             }
 
 
             .hero-visual {
-                order: -1;
+
+                order:
+                    -1;
+
             }
 
         }
@@ -1526,24 +2574,37 @@
         @media (max-width: 700px) {
 
             .nav-inner {
-                min-height: 65px;
+
+                min-height:
+                    65px;
+
             }
 
 
             .nav-links {
-                display: none;
+
+                display:
+                    none;
+
             }
 
 
             section {
-                padding: 78px 0;
+
+                padding:
+                    78px 0;
+
             }
 
 
             .hero {
-                min-height: auto;
 
-                padding-top: 105px;
+                min-height:
+                    auto;
+
+                padding-top:
+                    105px;
+
             }
 
 
@@ -1551,53 +2612,144 @@
             .skills-grid,
             .projects-grid,
             .contact-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
 
             .project-ai {
-                grid-column: span 1;
+
+                grid-column:
+                    span 1;
+
             }
 
 
             .form-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
 
 
             .form-group.full {
-                grid-column: span 1;
+
+                grid-column:
+                    span 1;
+
             }
 
 
             .experience-badge {
-                right: 15px;
-                bottom: 25px;
+
+                right:
+                    15px;
+
+                bottom:
+                    25px;
+
             }
 
 
             .network-orbit {
-                display: none;
+
+                display:
+                    none;
+
+            }
+
+
+            .circuit {
+
+                opacity:
+                    .18;
+
+                transform:
+                    scale(.75);
+
             }
 
 
             .hero h1 {
-                font-size: 43px;
+
+                font-size:
+                    43px;
+
             }
 
 
             .hero p {
-                font-size: 14px;
+
+                font-size:
+                    14px;
+
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
+
+
+<!-- =====================================================
+     TECHNOLOGY BACKGROUND
+===================================================== -->
+
+<div class="tech-background">
+
+    <div class="tech-grid"></div>
+
+
+    <div class="circuit circuit-1">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="circuit circuit-2">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="circuit circuit-3">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="data-center-glow glow-1"></div>
+
+    <div class="data-center-glow glow-2"></div>
+
+
+    <div class="network-node node-1"></div>
+
+    <div class="network-node node-2"></div>
+
+    <div class="network-node node-3"></div>
+
+    <div class="network-node node-4"></div>
+
+</div>
+
+
 
 <!-- =====================================================
      NAVBAR
@@ -1607,11 +2759,17 @@
 
     <div class="container nav-inner">
 
-        <a href="#home" class="logo">
+
+        <a
+            href="#home"
+            class="logo"
+        >
             MAHYARI.IR
         </a>
 
+
         <ul class="nav-links">
+
 
             <li>
                 <a href="#about">
@@ -1619,11 +2777,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="#skills">
                     تخصص‌ها
                 </a>
             </li>
+
 
             <li>
                 <a href="#experience">
@@ -1631,11 +2791,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="#projects">
                     پروژه‌ها
                 </a>
             </li>
+
 
             <li>
                 <a href="#request">
@@ -1643,11 +2805,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="#contact">
                     تماس
                 </a>
             </li>
+
 
         </ul>
 
@@ -1656,6 +2820,11 @@
 </nav>
 
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main>
 
 
@@ -1663,12 +2832,16 @@
      HERO
 ===================================================== -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
 
     <div class="container hero-grid">
 
 
         <div>
+
 
             <div class="eyebrow">
                 IT INFRASTRUCTURE & NETWORK
@@ -1695,6 +2868,7 @@
 
             <div class="hero-buttons">
 
+
                 <a
                     href="#projects"
                     class="btn btn-primary"
@@ -1709,6 +2883,7 @@
                 >
                     درخواست مشاوره
                 </a>
+
 
             </div>
 
@@ -1726,6 +2901,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -1735,8 +2911,11 @@
             <div class="network-orbit">
 
                 <div class="orbit-dot"></div>
+
                 <div class="orbit-dot"></div>
+
                 <div class="orbit-dot"></div>
+
                 <div class="orbit-dot"></div>
 
             </div>
@@ -1744,18 +2923,23 @@
 
             <div class="hero-card">
 
+
                 <img
                     src="./images/mojtaba-mahyari.jpeg"
                     alt="مجتبی مهیاری"
                 >
 
+
                 <div class="hero-photo-overlay"></div>
+
 
                 <div class="experience-badge">
                     20+ YEARS EXPERIENCE
                 </div>
 
+
             </div>
+
 
         </div>
 
@@ -1765,6 +2949,7 @@
 </section>
 
 
+
 <!-- =====================================================
      STATS
 ===================================================== -->
@@ -1772,6 +2957,7 @@
 <section>
 
     <div class="container">
+
 
         <div class="stats">
 
@@ -1830,9 +3016,11 @@
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -1843,20 +3031,25 @@
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 ABOUT ME
             </div>
 
+
             <h2 class="section-title">
                 متخصص زیرساخت
             </h2>
+
 
             <p class="section-desc">
                 تمرکز من بر طراحی و نگهداری زیرساخت‌هایی است که
                 پایدار، قابل توسعه، امن و قابل مدیریت باشند.
             </p>
+
 
         </div>
 
@@ -1866,9 +3059,11 @@
 
             <div class="about-card">
 
+
                 <h3>
                     متخصص زیرساخت
                 </h3>
+
 
                 <p>
                     تجربه در حوزه شبکه، دیتاسنتر، مجازی‌سازی،
@@ -1876,14 +3071,17 @@
                     امنیت و تداوم کسب‌وکار.
                 </p>
 
+
             </div>
 
 
             <div class="about-card">
 
+
                 <h3>
                     نگاه من به زیرساخت
                 </h3>
+
 
                 <p>
                     زیرساخت باید از ابتدا با نگاه به پایداری،
@@ -1892,14 +3090,17 @@
                     به فکر اصلاح آن باشیم.
                 </p>
 
+
             </div>
 
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -1910,15 +3111,19 @@
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 SPECIALTIES
             </div>
 
+
             <h2 class="section-title">
                 حوزه‌های تخصصی
             </h2>
+
 
         </div>
 
@@ -2086,9 +3291,11 @@
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -2099,15 +3306,19 @@
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 EXPERIENCE
             </div>
 
+
             <h2 class="section-title">
                 سوابق حرفه‌ای
             </h2>
+
 
         </div>
 
@@ -2119,15 +3330,19 @@
 
                 <div class="timeline-dot"></div>
 
+
                 <div class="timeline-card">
+
 
                     <h3>
                         سازمان منطقه آزاد قشم
                     </h3>
 
+
                     <div class="timeline-role">
                         IT Infrastructure & Network Administrator
                     </div>
+
 
                     <p>
                         شبکه، دیتاسنتر، مجازی‌سازی، سرویس‌های سازمانی،
@@ -2137,7 +3352,9 @@
                         تحلیل آفلاین مبتنی بر AI برای مانیتورینگ دیتاسنتر.
                     </p>
 
+
                 </div>
+
 
             </div>
 
@@ -2146,15 +3363,19 @@
 
                 <div class="timeline-dot"></div>
 
+
                 <div class="timeline-card">
+
 
                     <h3>
                         اتاق بازرگانی، صنایع، معادن و کشاورزی اصفهان
                     </h3>
 
+
                     <div class="timeline-role">
                         Data Center & Virtualization Project
                     </div>
+
 
                     <p>
                         اجرای پروژه زیرساخت دیتاسنتر و مجازی‌سازی با
@@ -2162,7 +3383,9 @@
                         Storage و به‌روزرسانی Firmware تجهیزات.
                     </p>
 
+
                 </div>
+
 
             </div>
 
@@ -2171,15 +3394,19 @@
 
                 <div class="timeline-dot"></div>
 
+
                 <div class="timeline-card">
+
 
                     <h3>
                         شرکت گاز استان اصفهان
                     </h3>
 
+
                     <div class="timeline-role">
                         Data Center & Virtualization Project
                     </div>
+
 
                     <p>
                         اجرای پروژه‌ای مشابه پروژه اتاق بازرگانی اصفهان
@@ -2187,7 +3414,9 @@
                         سرورها، VMware، Storage و نگهداری زیرساخت.
                     </p>
 
+
                 </div>
+
 
             </div>
 
@@ -2196,15 +3425,19 @@
 
                 <div class="timeline-dot"></div>
 
+
                 <div class="timeline-card">
+
 
                     <h3>
                         اداره‌کل میراث فرهنگی، گردشگری و صنایع دستی اصفهان
                     </h3>
 
+
                     <div class="timeline-role">
                         Network Administrator & Data Center Support
                     </div>
+
 
                     <p>
                         حدود یک سال فعالیت در حوزه مدیریت شبکه و پشتیبانی
@@ -2212,16 +3445,20 @@
                         ۳۰ تجهیز L2/L3 شبکه.
                     </p>
 
+
                 </div>
+
 
             </div>
 
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -2232,15 +3469,19 @@
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 SELECTED PROJECTS
             </div>
 
+
             <h2 class="section-title">
                 پروژه‌ها
             </h2>
+
 
         </div>
 
@@ -2250,19 +3491,23 @@
 
             <div class="project project-ai">
 
+
                 <div class="project-number">
                     FEATURED AI PROJECT
                 </div>
+
 
                 <h3>
                     راه‌اندازی سرور هوش مصنوعی برای تحلیل آفلاین
                     مانیتورینگ دیتاسنتر
                 </h3>
 
+
                 <p>
                     راه‌اندازی زیرساخت سرور هوش مصنوعی برای تحلیل آفلاین
                     داده‌های مانیتورینگ دیتاسنتر سازمان منطقه آزاد قشم.
                 </p>
+
 
             </div>
 
@@ -2487,79 +3732,127 @@
 
         </div>
 
+
     </div>
 
 </section>
 
 
+
 <!-- =====================================================
-     TECHNOLOGIES
+     TECHNOLOGY STACK
 ===================================================== -->
 
 <section>
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 TECHNOLOGY STACK
             </div>
 
+
             <h2 class="section-title">
                 فناوری‌ها و ابزارها
             </h2>
+
 
         </div>
 
 
         <div class="tech-list">
 
+
             <span class="tech">VMware ESXi</span>
+
             <span class="tech">VMware vCenter</span>
+
             <span class="tech">VDI</span>
+
             <span class="tech">SRM</span>
+
             <span class="tech">VMware Live Site Recovery</span>
+
             <span class="tech">Disaster Recovery</span>
+
             <span class="tech">Replication</span>
+
             <span class="tech">Recovery Plan</span>
+
             <span class="tech">HPE</span>
+
             <span class="tech">Cisco</span>
+
             <span class="tech">FortiGate</span>
+
             <span class="tech">Active Directory</span>
+
             <span class="tech">Windows Server</span>
+
             <span class="tech">Linux</span>
+
             <span class="tech">Splunk</span>
+
             <span class="tech">Zabbix</span>
+
             <span class="tech">Wazuh</span>
+
             <span class="tech">GLPI</span>
+
             <span class="tech">Veeam</span>
+
             <span class="tech">SAN Storage</span>
+
             <span class="tech">Routing</span>
+
             <span class="tech">Switching</span>
+
             <span class="tech">VLAN</span>
+
             <span class="tech">Firewall</span>
+
             <span class="tech">Network Security</span>
+
             <span class="tech">Network Design</span>
+
             <span class="tech">Communication Network</span>
+
             <span class="tech">Data Center</span>
+
             <span class="tech">Monitoring</span>
+
             <span class="tech">Log Management</span>
+
             <span class="tech">Backup</span>
+
             <span class="tech">Business Continuity</span>
+
             <span class="tech">IT Infrastructure</span>
+
             <span class="tech">Artificial Intelligence</span>
+
             <span class="tech">Offline AI</span>
+
             <span class="tech">Nextcloud</span>
+
             <span class="tech">VoIP</span>
+
             <span class="tech">Network Standardization</span>
+
             <span class="tech">Security Consulting</span>
 
+
         </div>
+
 
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -2573,21 +3866,26 @@
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 REQUEST
             </div>
 
+
             <h2 class="section-title">
                 درخواست همکاری یا مشاوره
             </h2>
+
 
             <p class="section-desc">
                 چنانچه برای شبکه، زیرساخت، دیتاسنتر، مجازی‌سازی،
                 امنیت، مانیتورینگ یا سایر خدمات IT نیاز به بررسی دارید،
                 اطلاعات اولیه پروژه را ثبت کنید.
             </p>
+
 
         </div>
 
@@ -2597,9 +3895,11 @@
 
             <div class="request-info">
 
+
                 <h3>
                     پروژه خود را معرفی کنید
                 </h3>
+
 
                 <p>
                     کافی است شماره تماس و یک توضیح کوتاه از نیاز
@@ -2610,33 +3910,41 @@
 
                 <div class="request-points">
 
+
                     <div class="request-point">
                         ✓ بررسی پروژه‌های شبکه و زیرساخت
                     </div>
+
 
                     <div class="request-point">
                         ✓ مشاوره دیتاسنتر و مجازی‌سازی
                     </div>
 
+
                     <div class="request-point">
                         ✓ امنیت، مانیتورینگ و Disaster Recovery
                     </div>
+
 
                     <div class="request-point">
                         ✓ طراحی و استانداردسازی شبکه
                     </div>
 
+
                 </div>
+
 
             </div>
 
 
             <div class="request-form-card">
 
+
                 <form id="requestForm">
 
 
                     <!-- Honeypot -->
+
                     <input
                         type="text"
                         id="website"
@@ -2652,9 +3960,11 @@
 
                         <div class="form-group">
 
+
                             <label for="name">
                                 نام و نام خانوادگی
                             </label>
+
 
                             <input
                                 class="form-control"
@@ -2666,14 +3976,17 @@
                                 placeholder="مثلاً علی احمدی"
                             >
 
+
                         </div>
 
 
                         <div class="form-group">
 
+
                             <label for="mobile">
                                 شماره موبایل
                             </label>
+
 
                             <input
                                 class="form-control"
@@ -2686,14 +3999,17 @@
                                 placeholder="0912xxxxxxx"
                             >
 
+
                         </div>
 
 
                         <div class="form-group full">
 
+
                             <label for="subject">
                                 موضوع درخواست
                             </label>
+
 
                             <select
                                 class="form-control"
@@ -2702,60 +4018,75 @@
                                 required
                             >
 
+
                                 <option value="">
                                     انتخاب کنید
                                 </option>
+
 
                                 <option value="مشاوره شبکه">
                                     مشاوره شبکه
                                 </option>
 
+
                                 <option value="طراحی شبکه">
                                     طراحی شبکه
                                 </option>
+
 
                                 <option value="دیتاسنتر">
                                     دیتاسنتر
                                 </option>
 
+
                                 <option value="مجازی‌سازی">
                                     مجازی‌سازی
                                 </option>
+
 
                                 <option value="VDI">
                                     VDI
                                 </option>
 
+
                                 <option value="امنیت شبکه">
                                     امنیت شبکه
                                 </option>
+
 
                                 <option value="مانیتورینگ">
                                     مانیتورینگ
                                 </option>
 
+
                                 <option value="Disaster Recovery">
                                     Disaster Recovery
                                 </option>
+
 
                                 <option value="Backup">
                                     Backup
                                 </option>
 
+
                                 <option value="سایر">
                                     سایر
                                 </option>
 
+
                             </select>
+
 
                         </div>
 
 
                         <div class="form-group full">
 
+
                             <label for="description">
                                 شرح کوتاه کار / نیاز
                             </label>
+
 
                             <textarea
                                 class="form-control"
@@ -2766,6 +4097,7 @@
                                 placeholder="مثلاً طراحی شبکه یک شرکت با ۴۰ کاربر، پیاده‌سازی فایروال و راه‌اندازی Backup..."
                             ></textarea>
 
+
                         </div>
 
 
@@ -2773,6 +4105,7 @@
 
 
                     <div class="form-submit">
+
 
                         <button
                             type="submit"
@@ -2788,18 +4121,23 @@
                             class="form-message"
                         ></div>
 
+
                     </div>
 
 
                 </form>
 
+
             </div>
 
+
         </div>
+
 
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -2810,15 +4148,19 @@
 
     <div class="container">
 
+
         <div class="section-head">
+
 
             <div class="section-label">
                 CONTACT
             </div>
 
+
             <h2 class="section-title">
                 ارتباط با من
             </h2>
+
 
         </div>
 
@@ -2828,35 +4170,43 @@
 
             <div class="contact-card">
 
+
                 <span>
                     موبایل
                 </span>
+
 
                 <a href="tel:09134337123">
                     09134337123
                 </a>
 
+
             </div>
 
 
             <div class="contact-card">
+
 
                 <span>
                     ایمیل
                 </span>
 
+
                 <a href="mailto:mojtaba.mahyarimcse@gmail.com">
                     mojtaba.mahyarimcse@gmail.com
                 </a>
+
 
             </div>
 
 
             <div class="contact-card">
 
+
                 <span>
                     LinkedIn
                 </span>
+
 
                 <a
                     href="https://www.linkedin.com/in/mojtoba-mahyari-8979369a/"
@@ -2866,10 +4216,12 @@
                     پروفایل LinkedIn
                 </a>
 
+
             </div>
 
 
         </div>
+
 
     </div>
 
@@ -2879,6 +4231,11 @@
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
     © 2026 Mojtaba Mahyari — IT Infrastructure & Network Specialist
@@ -2886,17 +4243,22 @@
 </footer>
 
 
+
 <!-- =====================================================
-     SUPABASE FORM
+     SUPABASE
 ===================================================== -->
 
 <script>
 
+
     /*
     =====================================================
     SUPABASE CONFIGURATION
+
+    این دو مقدار را با اطلاعات پروژه خودت جایگزین کن.
     =====================================================
     */
+
 
     const SUPABASE_URL =
         "YOUR_SUPABASE_URL";
@@ -2913,16 +4275,38 @@
         );
 
 
+
+    /*
+    =====================================================
+    FORM ELEMENTS
+    =====================================================
+    */
+
+
     const requestForm =
-        document.getElementById("requestForm");
+        document.getElementById(
+            "requestForm"
+        );
 
 
     const formMessage =
-        document.getElementById("formMessage");
+        document.getElementById(
+            "formMessage"
+        );
 
 
     const submitBtn =
-        document.getElementById("submitBtn");
+        document.getElementById(
+            "submitBtn"
+        );
+
+
+
+    /*
+    =====================================================
+    SHOW MESSAGE
+    =====================================================
+    */
 
 
     function showMessage(
@@ -2937,6 +4321,14 @@
             "form-message " + type;
 
     }
+
+
+
+    /*
+    =====================================================
+    NORMALIZE MOBILE
+    =====================================================
+    */
 
 
     function normalizeMobile(
@@ -2972,6 +4364,14 @@
     }
 
 
+
+    /*
+    =====================================================
+    VALIDATE MOBILE
+    =====================================================
+    */
+
+
     function isValidMobile(
         value
     ) {
@@ -2982,9 +4382,18 @@
     }
 
 
+
+    /*
+    =====================================================
+    FORM SUBMIT
+    =====================================================
+    */
+
+
     requestForm.addEventListener(
         "submit",
         async function(event) {
+
 
             event.preventDefault();
 
@@ -2996,12 +4405,14 @@
 
 
             /*
-            ضد Spam
+            Honeypot Anti Spam
             */
 
             const honeypot =
                 document
-                    .getElementById("website")
+                    .getElementById(
+                        "website"
+                    )
                     .value
                     .trim();
 
@@ -3015,9 +4426,15 @@
             }
 
 
+            /*
+            Get values
+            */
+
             const name =
                 document
-                    .getElementById("name")
+                    .getElementById(
+                        "name"
+                    )
                     .value
                     .trim();
 
@@ -3025,23 +4442,34 @@
             const mobile =
                 normalizeMobile(
                     document
-                        .getElementById("mobile")
+                        .getElementById(
+                            "mobile"
+                        )
                         .value
                 );
 
 
             const subject =
                 document
-                    .getElementById("subject")
+                    .getElementById(
+                        "subject"
+                    )
                     .value;
 
 
             const description =
                 document
-                    .getElementById("description")
+                    .getElementById(
+                        "description"
+                    )
                     .value
                     .trim();
 
+
+
+            /*
+            Validation
+            */
 
             if (
                 name.length < 2
@@ -3099,15 +4527,25 @@
             }
 
 
+
+            /*
+            Disable button
+            */
+
             submitBtn.disabled =
                 true;
-
 
             submitBtn.textContent =
                 "در حال ثبت...";
 
 
+
             try {
+
+
+                /*
+                Insert into Supabase
+                */
 
                 const {
                     error
@@ -3119,7 +4557,9 @@
                         )
 
                         .insert([
+
                             {
+
                                 name:
                                     name,
 
@@ -3134,9 +4574,16 @@
 
                                 status:
                                     "جدید"
+
                             }
+
                         ]);
 
+
+
+                /*
+                Check error
+                */
 
                 if (
                     error
@@ -3157,6 +4604,11 @@
                 }
 
 
+
+                /*
+                Success
+                */
+
                 requestForm.reset();
 
 
@@ -3166,7 +4618,10 @@
                 );
 
 
-            } catch (
+            }
+
+
+            catch (
                 error
             ) {
 
@@ -3180,8 +4635,10 @@
                     "error"
                 );
 
+            }
 
-            } finally {
+
+            finally {
 
                 submitBtn.disabled =
                     false;
@@ -3191,10 +4648,14 @@
 
             }
 
+
         }
     );
 
+
 </script>
 
+
 </body>
+
 </html>
