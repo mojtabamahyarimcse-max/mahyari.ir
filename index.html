@@ -1,66 +1,31 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>
-        مجتبی مهیاری | IT Infrastructure & Network Specialist
-    </title>
+    <title>Mojtaba Mahyari | IT Infrastructure & Network Administrator</title>
 
     <meta name="description"
-          content="وب‌سایت حرفه‌ای مجتبی مهیاری، متخصص زیرساخت IT، شبکه، دیتاسنتر، مجازی‌سازی، امنیت شبکه، مانیتورینگ و زیرساخت AI.">
+          content="Mojtaba Mahyari - IT Infrastructure, Network, Data Center and Cybersecurity Professional">
 
-    <meta name="keywords"
-          content="مجتبی مهیاری, شبکه, Network, IT Infrastructure, Data Center, VMware, FortiGate, Zabbix, Splunk, Wazuh, Cyber Security, AI Infrastructure">
-
-    <meta name="author"
-          content="Mojtaba Mahyari">
-
-
-    <!-- =========================================================
-         FONTS
-    ========================================================= -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
 
-
-    <!-- =========================================================
-         SUPABASE
-    ========================================================= -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
     <style>
-
-        /* =========================================================
-           ROOT
-        ========================================================= */
-
         :root {
-
             --bg-main: #03090f;
             --bg-secondary: #06121b;
-
             --bg-card: rgba(10, 23, 34, .72);
             --bg-card-soft: rgba(8, 20, 30, .58);
 
             --cyan: #16b9ff;
             --cyan-light: #43c9ff;
-
             --cyan-soft: rgba(22, 185, 255, .12);
 
             --text-main: #edf7ff;
@@ -78,1083 +43,765 @@
             --font-en: "Inter", sans-serif;
         }
 
-
-        /* =========================================================
-           RESET
-        ========================================================= */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
-
 
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-
-            font-family: var(--font-body);
-
             background:
-
-                radial-gradient(
-                    circle at 15% 10%,
-                    rgba(22,185,255,.08),
-                    transparent 28%
-                ),
-
-                radial-gradient(
-                    circle at 85% 30%,
-                    rgba(22,185,255,.05),
-                    transparent 30%
-                ),
-
-                var(--bg-main);
+                linear-gradient(rgba(3,9,15,.96), rgba(3,9,15,.98)),
+                radial-gradient(circle at 20% 10%, rgba(22,185,255,.08), transparent 28%),
+                radial-gradient(circle at 80% 30%, rgba(22,185,255,.05), transparent 25%);
 
             color: var(--text-main);
-
-            line-height: 1.9;
-
+            font-family: var(--font-body);
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
 
-        a {
-            text-decoration: none;
-            color: inherit;
+            background-image:
+                linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+
+            background-size: 55px 55px;
         }
 
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+
+            background-image:
+                radial-gradient(circle, rgba(22,185,255,.16) 1px, transparent 1px);
+
+            background-size: 120px 120px;
+            opacity: .18;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         img {
             max-width: 100%;
-            display: block;
         }
-
-
-        button,
-        input,
-        textarea {
-            font-family: inherit;
-        }
-
-
-        /* =========================================================
-           TECH BACKGROUND
-        ========================================================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -3;
-
-            opacity: .28;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(22,185,255,.035) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(22,185,255,.035) 1px,
-                    transparent 1px
-                );
-
-            background-size: 50px 50px;
-
-            mask-image:
-                radial-gradient(
-                    circle at center,
-                    black 20%,
-                    transparent 90%
-                );
-        }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -2;
-
-            pointer-events: none;
-
-            background:
-
-                radial-gradient(
-                    circle at 20% 30%,
-                    rgba(22,185,255,.07) 0 1px,
-                    transparent 2px
-                ),
-
-                radial-gradient(
-                    circle at 80% 70%,
-                    rgba(22,185,255,.06) 0 1px,
-                    transparent 2px
-                );
-
-            background-size:
-                90px 90px,
-                130px 130px;
-        }
-
-
-        /* =========================================================
-           SCROLLBAR
-        ========================================================= */
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-
-        ::-webkit-scrollbar-track {
-            background: #02070c;
-        }
-
-
-        ::-webkit-scrollbar-thumb {
-
-            background:
-                rgba(22,185,255,.3);
-
-            border-radius: 10px;
-        }
-
-
-        ::-webkit-scrollbar-thumb:hover {
-
-            background:
-                rgba(22,185,255,.6);
-        }
-
-
-        /* =========================================================
-           CONTAINER
-        ========================================================= */
 
         .container {
-
-            width:
-                min(1180px, calc(100% - 40px));
-
+            width: min(1180px, calc(100% - 40px));
             margin: auto;
         }
 
+        /* =========================
+           NAVBAR
+        ========================= */
 
-        section {
-
-            padding: 110px 0;
-
-            position: relative;
-        }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
-
-        .nav {
-
+        nav {
             position: fixed;
-
             top: 0;
-            left: 0;
             right: 0;
-
-            z-index: 1000;
-
-            backdrop-filter: blur(18px);
-
-            background:
-                rgba(3,9,15,.72);
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .nav-inner {
+            left: 0;
 
             height: 78px;
 
-            display: flex;
+            z-index: 1000;
 
-            align-items: center;
+            background: rgba(3,9,15,.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
 
-            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,.055);
         }
 
-
-        /* =========================================================
-           EVONEX LOGO
-        ========================================================= */
-
-        .logo {
+        .nav-inner {
+            height: 100%;
 
             display: flex;
-
             align-items: center;
+            justify-content: space-between;
 
+            gap: 25px;
+        }
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            display: flex;
+            align-items: center;
             gap: 12px;
 
-            font-family: var(--font-en);
-
-            font-weight: 800;
-
-            letter-spacing: .5px;
-
             direction: ltr;
+
+            min-width: 205px;
+        }
+
+        .logo-image {
+            width: 72px;
+            height: 72px;
+
+            object-fit: contain;
+            display: block;
+
+            flex-shrink: 0;
+
+            filter:
+                drop-shadow(0 0 12px rgba(22,185,255,.22))
+                drop-shadow(0 0 24px rgba(22,185,255,.10));
+        }
+
+        .logo-text {
+            font-family: var(--font-en);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 2px;
+
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition: .25s ease;
 
             position: relative;
         }
 
+        .nav-links a::after {
+            content: "";
 
-        .logo-image {
+            position: absolute;
+            right: 0;
+            bottom: -8px;
 
-            width: 52px;
-            height: 52px;
+            width: 0;
+            height: 2px;
 
-            object-fit: contain;
+            background: var(--cyan);
 
-            display: block;
-
-            filter:
-                drop-shadow(
-                    0 0 14px
-                    rgba(22,185,255,.25)
-                );
-
-            transition: .3s;
+            transition: .25s ease;
         }
 
-
-        .logo:hover .logo-image {
-
-            transform: scale(1.06);
-
-            filter:
-                drop-shadow(
-                    0 0 20px
-                    rgba(22,185,255,.42)
-                );
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cyan-light);
         }
 
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
 
-        .logo-text {
+        /* =========================
+           HERO
+        ========================= */
 
-            font-size: 17px;
+        .hero {
+            min-height: 100vh;
+
+            padding-top: 130px;
+            padding-bottom: 80px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+
+            grid-template-columns: 1.15fr .85fr;
+
+            gap: 70px;
+
+            align-items: center;
+
+            direction: ltr;
+        }
+
+        .hero-content {
+            direction: rtl;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--cyan-light);
+
+            font-family: var(--font-en);
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 1.2px;
+
+            margin-bottom: 20px;
+        }
+
+        .eyebrow::before {
+            content: "";
+
+            width: 28px;
+            height: 1px;
+
+            background: var(--cyan);
+        }
+
+        .hero h1 {
+            font-family: var(--font-en);
+
+            font-size: clamp(44px, 6vw, 76px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--cyan);
+        }
+
+        .hero-title {
+            font-size: 22px;
+
+            color: var(--text-soft);
+
+            margin-bottom: 22px;
+
+            font-weight: 500;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            color: var(--text-muted);
+
+            font-size: 15px;
+
+            line-height: 2.1;
+
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding: 0 23px;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: .25s ease;
+
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+
+            color: #021018;
+
+            box-shadow: 0 10px 35px rgba(22,185,255,.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            background: var(--cyan-light);
+
+            box-shadow: 0 14px 40px rgba(22,185,255,.25);
+        }
+
+        .btn-secondary {
+            border-color: var(--border-cyan);
+
+            background: rgba(22,185,255,.045);
 
             color: var(--text-main);
         }
 
+        .btn-secondary:hover {
+            border-color: var(--cyan);
 
-        /* =========================================================
-           TECHNOLOGICAL LINE NEXT TO LOGO
-        ========================================================= */
+            color: var(--cyan-light);
 
-        .logo::after {
-
-            content: "";
-
-            position: absolute;
-
-            left: calc(100% + 18px);
-
-            top: 50%;
-
-            width: 115px;
-
-            height: 1px;
-
-            transform:
-                translateY(-50%);
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(22,185,255,.45),
-                    rgba(22,185,255,.12),
-                    transparent
-                );
-
-            pointer-events: none;
+            transform: translateY(-2px);
         }
 
-
-        .nav-links {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 26px;
-        }
-
-
-        .nav-links a {
-
-            color: var(--text-soft);
-
-            font-size: 14px;
-
-            transition: .25s;
-        }
-
-
-        .nav-links a:hover {
-
-            color: var(--cyan);
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            padding-top: 120px;
-        }
-
-
-        .hero-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                1.25fr
-                .75fr;
-
-            gap: 80px;
-
-            align-items: center;
-        }
-
-
-        .hero-badge {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            padding: 8px 14px;
-
-            border:
-                1px solid var(--border-cyan);
-
-            border-radius: 50px;
-
-            background:
-                var(--cyan-soft);
-
-            color:
-                var(--cyan-light);
-
-            font-size: 13px;
-
-            margin-bottom: 24px;
-        }
-
-
-        .status-dot {
-
-            width: 8px;
-            height: 8px;
-
-            border-radius: 50%;
-
-            background:
-                var(--cyan);
-
-            box-shadow:
-                0 0 12px var(--cyan);
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                clamp(42px, 6vw, 76px);
-
-            line-height: 1.15;
-
-            margin-bottom: 18px;
-
-            font-weight: 800;
-        }
-
-
-        .hero h1 span {
-
-            color:
-                var(--cyan);
-
-            text-shadow:
-                0 0 30px
-                rgba(22,185,255,.18);
-        }
-
-
-        .hero-title {
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            text-align: right;
-
-            font-size:
-                clamp(20px, 3vw, 32px);
-
-            font-weight: 700;
-
-            color:
-                var(--text-soft);
-
-            margin-bottom: 24px;
-        }
-
-
-        .hero-description {
-
-            color:
-                var(--text-muted);
-
-            max-width: 680px;
-
-            font-size: 16px;
-
-            line-height: 2;
-        }
-
-
-        .hero-actions {
-
-            display: flex;
-
-            gap: 14px;
-
-            margin-top: 34px;
-
-            flex-wrap: wrap;
-        }
-
-
-        .btn {
-
-            padding:
-                12px 22px;
-
-            border-radius: 10px;
-
-            border:
-                1px solid var(--border-cyan);
-
-            transition: .25s;
-
-            font-size: 14px;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-        }
-
-
-        .btn-primary {
-
-            background:
-                var(--cyan);
-
-            color:
-                #021018;
-
-            font-weight: 700;
-
-            box-shadow:
-                0 8px 30px
-                rgba(22,185,255,.16);
-        }
-
-
-        .btn-primary:hover {
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 12px 35px
-                rgba(22,185,255,.25);
-        }
-
-
-        .btn-outline {
-
-            color:
-                var(--cyan-light);
-
-            background:
-                rgba(22,185,255,.04);
-        }
-
-
-        .btn-outline:hover {
-
-            background:
-                rgba(22,185,255,.1);
-        }
-
-
-        /* =========================================================
-           HERO IMAGE
-        ========================================================= */
-
-        .hero-visual {
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .hero-image {
+            direction: rtl;
 
             display: flex;
 
             justify-content: center;
+        }
+
+        .profile-frame {
+            width: min(390px, 100%);
 
             position: relative;
         }
 
-
-        .profile-frame {
-
-            width:
-                min(370px, 80vw);
-
-            aspect-ratio: 1 / 1;
-
-            border-radius: 28px;
-
-            padding: 10px;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(22,185,255,.5),
-                    rgba(22,185,255,.04),
-                    rgba(255,255,255,.04)
-                );
-
-            box-shadow:
-
-                0 30px 80px
-                rgba(0,0,0,.35),
-
-                0 0 60px
-                rgba(22,185,255,.07);
-        }
-
-
-        .profile-image {
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            border-radius: 20px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-        }
-
-
-        .floating-tech {
+        .profile-frame::before {
+            content: "";
 
             position: absolute;
 
-            padding:
-                8px 12px;
+            inset: -18px;
 
-            border:
-                1px solid var(--border-cyan);
+            border: 1px solid rgba(22,185,255,.16);
 
-            border-radius: 8px;
+            border-radius: 28px;
 
-            background:
-                rgba(4,14,22,.88);
-
-            backdrop-filter:
-                blur(12px);
-
-            color:
-                var(--cyan-light);
-
-            font-family:
-                var(--font-en);
-
-            font-size: 11px;
+            transform: rotate(3deg);
         }
 
+        .profile-frame::after {
+            content: "";
 
-        .tech-1 {
-            top: 10%;
-            right: -8%;
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            left: -35px;
+            bottom: -35px;
+
+            border-radius: 50%;
+
+            background: rgba(22,185,255,.07);
+
+            filter: blur(25px);
+
+            z-index: -1;
         }
 
+        .profile-image {
+            width: 100%;
 
-        .tech-2 {
-            bottom: 15%;
-            left: -8%;
+            aspect-ratio: 1 / 1.12;
+
+            object-fit: cover;
+
+            border-radius: 24px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            box-shadow: var(--shadow);
+
+            display: block;
         }
 
-
-        .tech-3 {
-            bottom: 4%;
-            right: 5%;
-        }
-
-
-        /* =========================================================
+        /* =========================
            STATS
-        ========================================================= */
+        ========================= */
 
         .stats {
+            padding: 20px 0 90px;
+        }
 
+        .stats-grid {
             display: grid;
 
-            grid-template-columns:
-                repeat(4,1fr);
+            grid-template-columns: repeat(4,1fr);
 
-            gap: 14px;
-
-            margin-top: 50px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
-
 
         .stat {
+            padding: 30px 20px;
 
-            padding: 20px;
+            text-align: center;
 
-            border:
-                1px solid var(--border);
-
-            border-radius: 14px;
-
-            background:
-                rgba(8,20,30,.55);
+            border-left: 1px solid var(--border);
         }
 
+        .stat:last-child {
+            border-left: none;
+        }
 
         .stat-number {
+            font-family: var(--font-en);
 
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            font-size: 28px;
-
+            font-size: 32px;
             font-weight: 800;
 
-            color:
-                var(--cyan);
-        }
+            color: var(--cyan);
 
+            margin-bottom: 4px;
+        }
 
         .stat-label {
-
-            color:
-                var(--text-muted);
+            color: var(--text-muted);
 
             font-size: 12px;
-
-            margin-top: 4px;
         }
 
+        /* =========================
+           SECTION
+        ========================= */
 
-        /* =========================================================
-           SECTION HEADER
-        ========================================================= */
+        section {
+            padding: 90px 0;
+        }
 
         .section-header {
-
             margin-bottom: 45px;
         }
 
-
         .section-kicker {
+            color: var(--cyan);
 
-            font-family:
-                var(--font-en);
+            font-family: var(--font-en);
 
-            direction: ltr;
+            font-size: 11px;
 
-            color:
-                var(--cyan);
-
-            font-size: 12px;
+            font-weight: 700;
 
             letter-spacing: 2px;
 
             text-transform: uppercase;
 
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
+        .section-title {
+            font-size: 34px;
 
-        .section-header h2 {
-
-            font-size:
-                clamp(30px,4vw,44px);
+            line-height: 1.4;
 
             margin-bottom: 12px;
         }
 
+        .section-description {
+            color: var(--text-muted);
 
-        .section-header p {
+            max-width: 720px;
 
-            max-width: 760px;
-
-            color:
-                var(--text-muted);
-
-            font-size: 15px;
+            font-size: 14px;
         }
 
-
-        /* =========================================================
-           CARDS
-        ========================================================= */
-
-        .card {
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(10,23,34,.78),
-                    rgba(7,17,26,.65)
-                );
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                var(--radius);
-
-            box-shadow:
-                var(--shadow);
-
-            transition:
-
-                transform .25s,
-                border-color .25s,
-                box-shadow .25s;
-        }
-
-
-        .card:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                var(--border-cyan);
-
-            box-shadow:
-
-                0 25px 70px
-                rgba(0,0,0,.28),
-
-                0 0 30px
-                rgba(22,185,255,.05);
-        }
-
-
-        /* =========================================================
+        /* =========================
            ABOUT
-        ========================================================= */
+        ========================= */
 
         .about-grid {
-
             display: grid;
 
-            grid-template-columns:
-                1fr 1fr;
+            grid-template-columns: 1.2fr .8fr;
 
-            gap: 24px;
+            gap: 30px;
         }
 
+        .card {
+            background: var(--bg-card);
 
-        .about-card {
+            border: 1px solid var(--border);
 
-            padding: 32px;
+            border-radius: var(--radius);
+
+            padding: 30px;
+
+            box-shadow: var(--shadow);
+
+            backdrop-filter: blur(14px);
+
+            transition: .25s ease;
         }
 
+        .card:hover {
+            border-color: var(--border-cyan);
 
-        .about-card h3 {
-
-            margin-bottom: 16px;
-
-            font-size: 20px;
+            transform: translateY(-3px);
         }
 
-
-        .about-card p {
-
-            color:
-                var(--text-soft);
+        .about-text {
+            color: var(--text-soft);
 
             font-size: 14px;
 
-            line-height: 2.1;
+            line-height: 2.25;
         }
 
-
-        /* =========================================================
-           EDUCATION
-        ========================================================= */
-
-        .education-grid {
+        .about-list {
+            list-style: none;
 
             display: grid;
 
-            grid-template-columns:
-                repeat(2,1fr);
+            gap: 14px;
+        }
+
+        .about-list li {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 13px;
+
+            border-bottom: 1px solid var(--border);
+
+            font-size: 13px;
+        }
+
+        .about-list li:last-child {
+            border-bottom: none;
+        }
+
+        .about-list span:first-child {
+            color: var(--text-muted);
+        }
+
+        .about-list span:last-child {
+            color: var(--text-main);
+
+            text-align: left;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================= */
+
+        .education-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2,1fr);
 
             gap: 20px;
         }
 
-
         .education-card {
-
-            padding: 30px;
-
             position: relative;
 
             overflow: hidden;
         }
 
-
         .education-card::before {
-
             content: "";
 
             position: absolute;
 
-            top: 0;
             right: 0;
+            top: 0;
 
-            width: 4px;
+            width: 3px;
             height: 100%;
 
-            background:
-                linear-gradient(
-                    to bottom,
-                    var(--cyan),
-                    transparent
-                );
+            background: var(--cyan);
         }
 
+        .education-icon {
+            width: 48px;
+            height: 48px;
 
-        .education-degree {
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            color:
-                var(--cyan);
-
-            font-size: 11px;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 10px;
-        }
-
-
-        .education-card h3 {
-
-            font-size: 19px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .education-card p {
-
-            color:
-                var(--text-muted);
-
-            font-size: 13px;
-
-            line-height: 2;
-        }
-
-
-        /* =========================================================
-           SKILLS
-        ========================================================= */
-
-        .skills-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap: 16px;
-        }
-
-
-        .skill-card {
-
-            padding: 25px;
-        }
-
-
-        .skill-icon {
-
-            width: 44px;
-            height: 44px;
+            border-radius: 12px;
 
             display: flex;
 
             align-items: center;
             justify-content: center;
 
-            border-radius: 12px;
+            background: var(--cyan-soft);
 
-            background:
-                rgba(22,185,255,.08);
-
-            border:
-                1px solid
-                var(--border-cyan);
-
-            color:
-                var(--cyan);
-
-            font-family:
-                var(--font-en);
-
-            font-weight: 800;
+            color: var(--cyan);
 
             margin-bottom: 18px;
+
+            font-size: 20px;
         }
 
+        .education-degree {
+            font-size: 20px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .education-university {
+            color: var(--cyan-light);
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+        .education-field {
+            color: var(--text-muted);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 25px;
+
+            background: var(--bg-card-soft);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            transition: .25s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--border-cyan);
+
+            transform: translateY(-3px);
+        }
+
+        .skill-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--cyan-soft);
+
+            color: var(--cyan);
+
+            margin-bottom: 15px;
+
+            font-family: var(--font-en);
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
 
         .skill-card h3 {
-
             font-size: 16px;
 
             margin-bottom: 8px;
         }
 
-
         .skill-card p {
-
-            color:
-                var(--text-muted);
-
-            font-size: 13px;
-        }
-
-
-        /* =========================================================
-           CERTIFICATIONS
-        ========================================================= */
-
-        .cert-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap: 16px;
-        }
-
-
-        .cert-card {
-
-            padding: 23px;
-
-            min-height: 145px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-        }
-
-
-        .cert-type {
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            color:
-                var(--cyan);
-
-            font-size: 11px;
-
-            letter-spacing: 1px;
-        }
-
-
-        .cert-card h3 {
-
-            font-size: 16px;
-
-            margin-top: 10px;
-        }
-
-
-        .cert-card p {
-
-            color:
-                var(--text-muted);
+            color: var(--text-muted);
 
             font-size: 12px;
 
-            margin-top: 5px;
+            line-height: 1.9;
         }
 
+        /* =========================
+           CERTIFICATIONS
+        ========================= */
 
-        /* =========================================================
+        .cert-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 14px;
+        }
+
+        .cert-card {
+            padding: 20px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            background: var(--bg-card-soft);
+
+            transition: .25s ease;
+        }
+
+        .cert-card:hover {
+            border-color: var(--border-cyan);
+        }
+
+        .cert-code {
+            font-family: var(--font-en);
+
+            font-size: 13px;
+
+            color: var(--cyan);
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .cert-name {
+            color: var(--text-soft);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+        /* =========================
            EXPERIENCE
-        ========================================================= */
+        ========================= */
 
         .timeline {
-
             position: relative;
 
             max-width: 950px;
@@ -1162,9 +809,7 @@
             margin: auto;
         }
 
-
         .timeline::before {
-
             content: "";
 
             position: absolute;
@@ -1172,273 +817,204 @@
             top: 0;
             bottom: 0;
 
-            right: 14px;
+            right: 9px;
 
             width: 1px;
 
-            background:
-
-                linear-gradient(
-                    to bottom,
-                    var(--cyan),
-                    rgba(22,185,255,.05)
-                );
+            background: linear-gradient(
+                to bottom,
+                var(--cyan),
+                rgba(22,185,255,.05)
+            );
         }
-
 
         .timeline-item {
-
             position: relative;
 
-            padding-right: 55px;
+            padding-right: 50px;
 
-            margin-bottom: 35px;
+            margin-bottom: 32px;
         }
 
-
         .timeline-dot {
-
             position: absolute;
 
-            right: 8px;
+            right: 0;
+            top: 7px;
 
-            top: 12px;
-
-            width: 13px;
-            height: 13px;
+            width: 19px;
+            height: 19px;
 
             border-radius: 50%;
 
-            background:
-                var(--bg-main);
+            background: var(--bg-main);
 
-            border:
-                2px solid var(--cyan);
+            border: 2px solid var(--cyan);
 
-            box-shadow:
-                0 0 15px
-                rgba(22,185,255,.45);
+            box-shadow: 0 0 18px rgba(22,185,255,.25);
         }
 
+        .timeline-card {
+            background: var(--bg-card);
 
-        .experience-card {
+            border: 1px solid var(--border);
 
-            padding: 28px;
+            border-radius: 16px;
+
+            padding: 24px 26px;
         }
 
+        .timeline-company {
+            color: var(--cyan);
 
-        .experience-company {
+            font-family: var(--font-en);
 
-            font-family:
-                var(--font-en);
+            font-size: 11px;
 
-            direction: ltr;
-
-            text-align: right;
-
-            color:
-                var(--cyan);
-
-            font-size: 12px;
+            font-weight: 700;
 
             letter-spacing: 1px;
+
+            margin-bottom: 7px;
+        }
+
+        .timeline-card h3 {
+            font-size: 18px;
 
             margin-bottom: 6px;
         }
 
-
-        .experience-card h3 {
-
-            font-size: 19px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .experience-card p {
-
-            color:
-                var(--text-muted);
+        .timeline-role {
+            color: var(--text-soft);
 
             font-size: 13px;
-
-            line-height: 2;
-        }
-
-
-        /* =========================================================
-           FEATURED AI
-        ========================================================= */
-
-        .featured {
-
-            padding: 40px;
-
-            border:
-                1px solid
-                rgba(22,185,255,.2);
-
-            background:
-
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(22,185,255,.1),
-                    transparent 30%
-                ),
-
-                linear-gradient(
-                    145deg,
-                    rgba(9,27,40,.9),
-                    rgba(4,13,20,.8)
-                );
-
-            border-radius: 24px;
-
-            overflow: hidden;
-
-            position: relative;
-        }
-
-
-        .featured::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 250px;
-            height: 250px;
-
-            border-radius: 50%;
-
-            border:
-                1px solid
-                rgba(22,185,255,.08);
-
-            left: -100px;
-            bottom: -100px;
-        }
-
-
-        .featured h3 {
-
-            font-size: 27px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .featured p {
-
-            max-width: 800px;
-
-            color:
-                var(--text-soft);
-
-            font-size: 14px;
-        }
-
-
-        .tag-list {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-
-            margin-top: 22px;
-        }
-
-
-        .tag {
-
-            padding:
-                6px 10px;
-
-            border-radius: 8px;
-
-            background:
-                rgba(22,185,255,.07);
-
-            border:
-                1px solid
-                rgba(22,185,255,.12);
-
-            color:
-                var(--cyan-light);
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            font-size: 11px;
-        }
-
-
-        /* =========================================================
-           PROJECTS
-        ========================================================= */
-
-        .projects-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap: 16px;
-        }
-
-
-        .project-card {
-
-            padding: 26px;
-        }
-
-
-        .project-number {
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            color:
-                rgba(22,185,255,.45);
-
-            font-size: 12px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .project-card h3 {
-
-            font-size: 17px;
 
             margin-bottom: 10px;
         }
 
+        .timeline-card p {
+            color: var(--text-muted);
 
-        .project-card p {
+            font-size: 12px;
 
-            color:
-                var(--text-muted);
-
-            font-size: 13px;
-
-            line-height: 2;
+            line-height: 1.9;
         }
 
+        /* =========================
+           FEATURED
+        ========================= */
 
-        /* =========================================================
-           TECHNOLOGY STACK
-        ========================================================= */
+        .featured {
+            position: relative;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border-cyan);
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(22,185,255,.12),
+                    transparent 35%
+                ),
+                var(--bg-card);
+        }
+
+        .featured-content {
+            max-width: 820px;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+
+            padding: 6px 12px;
+
+            border-radius: 30px;
+
+            background: var(--cyan-soft);
+
+            color: var(--cyan);
+
+            font-size: 11px;
+
+            margin-bottom: 18px;
+        }
+
+        .featured h3 {
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+        .featured p {
+            color: var(--text-soft);
+
+            font-size: 14px;
+
+            line-height: 2.2;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 18px;
+        }
+
+        .project-card {
+            background: var(--bg-card-soft);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            transition: .25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+
+            border-color: var(--border-cyan);
+        }
+
+        .project-number {
+            color: rgba(22,185,255,.45);
+
+            font-family: var(--font-en);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 16px;
+
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+
+            font-size: 12px;
+
+            line-height: 1.9;
+        }
+
+        /* =========================
+           STACK
+        ========================= */
 
         .stack {
-
             display: flex;
 
             flex-wrap: wrap;
@@ -1446,840 +1022,706 @@
             gap: 10px;
         }
 
-
         .stack-item {
+            padding: 10px 15px;
 
-            padding:
-                10px 15px;
-
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             border-radius: 10px;
 
-            background:
-                rgba(8,20,30,.55);
+            background: rgba(255,255,255,.025);
 
-            color:
-                var(--text-soft);
+            color: var(--text-soft);
 
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
+            font-family: var(--font-en);
 
             font-size: 12px;
 
-            transition: .25s;
+            transition: .2s ease;
         }
-
 
         .stack-item:hover {
+            color: var(--cyan-light);
 
-            border-color:
-                var(--border-cyan);
+            border-color: var(--border-cyan);
 
-            color:
-                var(--cyan);
+            background: var(--cyan-soft);
         }
 
-
-        /* =========================================================
+        /* =========================
            CONTACT
-        ========================================================= */
+        ========================= */
 
         .contact-grid {
-
             display: grid;
 
-            grid-template-columns:
-                .8fr 1.2fr;
+            grid-template-columns: .85fr 1.15fr;
 
-            gap: 24px;
+            gap: 25px;
         }
 
+        .contact-info {
+            display: grid;
 
-        .contact-card {
-
-            padding: 30px;
+            gap: 13px;
         }
-
 
         .contact-item {
+            display: flex;
 
-            padding: 17px 0;
+            align-items: center;
 
-            border-bottom:
-                1px solid var(--border);
+            gap: 15px;
+
+            padding: 17px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            background: var(--bg-card-soft);
         }
 
+        .contact-icon {
+            width: 40px;
+            height: 40px;
 
-        .contact-item:last-child {
+            flex-shrink: 0;
 
-            border-bottom: none;
-        }
+            display: flex;
 
-
-        .contact-label {
-
-            font-size: 11px;
-
-            color:
-                var(--text-muted);
-
-            margin-bottom: 3px;
-        }
-
-
-        .contact-value {
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            text-align: right;
-
-            color:
-                var(--text-soft);
-
-            font-size: 13px;
-        }
-
-
-        form {
-
-            display: grid;
-
-            gap: 14px;
-        }
-
-
-        .form-row {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 14px;
-        }
-
-
-        input,
-        textarea {
-
-            width: 100%;
-
-            padding:
-                13px 15px;
-
-            background:
-                rgba(3,10,16,.7);
-
-            border:
-                1px solid var(--border);
+            align-items: center;
+            justify-content: center;
 
             border-radius: 10px;
 
-            color:
-                var(--text-main);
+            background: var(--cyan-soft);
+
+            color: var(--cyan);
+
+            font-family: var(--font-en);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .contact-item small {
+            display: block;
+
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            margin-bottom: 2px;
+        }
+
+        .contact-item span {
+            color: var(--text-soft);
+
+            font-family: var(--font-en);
+
+            font-size: 12px;
+
+            direction: ltr;
+
+            display: block;
+
+            text-align: right;
+        }
+
+        .contact-form {
+            display: grid;
+
+            gap: 14px;
+        }
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns: repeat(2,1fr);
+
+            gap: 14px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            background: rgba(0,0,0,.18);
+
+            border: 1px solid var(--border);
+
+            border-radius: 11px;
+
+            padding: 14px 15px;
+
+            color: var(--text-main);
+
+            font-family: var(--font-body);
+
+            font-size: 12px;
 
             outline: none;
 
-            transition: .25s;
-
-            font-size: 13px;
+            transition: .2s ease;
         }
-
 
         input:focus,
         textarea:focus {
-
-            border-color:
-                var(--border-cyan);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(22,185,255,.05);
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(22,185,255,.06);
         }
 
-
         textarea {
-
-            min-height: 150px;
+            min-height: 145px;
 
             resize: vertical;
         }
 
-
-        .form-status {
-
+        .form-message {
             font-size: 12px;
 
-            color:
-                var(--text-muted);
+            color: var(--cyan);
 
-            min-height: 24px;
+            min-height: 20px;
         }
 
-
-        .honeypot {
-
-            display: none !important;
-        }
-
-
-        /* =========================================================
+        /* =========================
            FOOTER
-        ========================================================= */
+        ========================= */
 
         footer {
+            padding: 35px 0;
 
-            border-top:
-                1px solid var(--border);
+            border-top: 1px solid var(--border);
 
-            padding: 30px 0;
+            color: var(--text-muted);
 
-            color:
-                var(--text-muted);
+            font-size: 11px;
 
-            font-size: 12px;
+            text-align: center;
         }
 
-
-        .footer-inner {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 20px;
+        footer span {
+            color: var(--cyan);
         }
 
-
-        .footer-brand {
-
-            font-family:
-                var(--font-en);
-
-            direction: ltr;
-
-            color:
-                var(--cyan);
-        }
-
-
-        /* =========================================================
+        /* =========================
            RESPONSIVE
-        ========================================================= */
+        ========================= */
 
         @media (max-width: 950px) {
 
-            .hero-grid,
-            .about-grid,
-            .contact-grid,
-            .education-grid {
+            .nav-links {
+                display: none;
+            }
 
+            .logo {
+                min-width: auto;
+            }
+
+            .hero-grid {
                 grid-template-columns: 1fr;
+
+                gap: 50px;
             }
 
-
-            .hero {
-
-                padding-top: 130px;
-            }
-
-
-            .hero-visual {
-
+            .hero-image {
                 order: -1;
             }
 
+            .profile-frame {
+                width: min(330px, 80%);
+            }
 
-            .skills-grid,
-            .cert-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
             .projects-grid {
-
-                grid-template-columns:
-                    repeat(2,1fr);
+                grid-template-columns: repeat(2,1fr);
             }
 
-
-            .stats {
-
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
-
-
-            .nav-links {
-
-                display: none;
-            }
-
-
-            .logo::after {
-
-                display: none;
+            .cert-grid {
+                grid-template-columns: repeat(3,1fr);
             }
         }
-
 
         @media (max-width: 600px) {
 
             .container {
-
-                width:
-                    min(100% - 24px, 1180px);
+                width: min(100% - 26px, 1180px);
             }
 
-
-            section {
-
-                padding: 75px 0;
+            nav {
+                height: 70px;
             }
 
+            .logo-image {
+                width: 64px;
+                height: 64px;
+            }
+
+            .logo-text {
+                font-size: 17px;
+            }
+
+            .hero {
+                padding-top: 105px;
+            }
 
             .hero h1 {
-
                 font-size: 43px;
             }
 
-
             .hero-title {
-
-                font-size: 19px;
+                font-size: 18px;
             }
 
-
-            .profile-frame {
-
-                width: 290px;
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
             }
 
+            .stat {
+                border-bottom: 1px solid var(--border);
+            }
 
+            .stat:nth-child(2) {
+                border-left: none;
+            }
+
+            .stat:nth-child(3) {
+                border-bottom: none;
+            }
+
+            .stat:nth-child(4) {
+                border-bottom: none;
+                border-left: none;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .education-grid,
             .skills-grid,
-            .cert-grid,
-            .projects-grid,
-            .stats {
-
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
 
+            .cert-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
 
             .form-row {
-
                 grid-template-columns: 1fr;
             }
 
-
-            .featured {
-
-                padding: 25px;
+            .timeline-item {
+                padding-right: 38px;
             }
 
-
-            .footer-inner {
-
-                flex-direction: column;
-
-                text-align: center;
+            .timeline-card {
+                padding: 20px;
             }
 
-
-            .floating-tech {
-
-                display: none;
-            }
-
-
-            .logo-image {
-
-                width: 48px;
-                height: 48px;
-            }
-
-
-            .logo-text {
-
-                font-size: 15px;
+            .contact-item span {
+                font-size: 11px;
             }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================================================
+<!-- =========================
      NAVIGATION
-========================================================= -->
+========================= -->
 
-<nav class="nav">
-
+<nav>
     <div class="container nav-inner">
 
-
-        <a href="#home"
-           class="logo">
-
+        <a href="#home" class="logo">
 
             <img
                 src="./images/evonex-logo.png"
                 alt="EVONEX"
-                class="logo-image"
-            >
-
+                class="logo-image">
 
             <div class="logo-text">
                 EVONEX
             </div>
 
-
         </a>
 
+        <ul class="nav-links">
 
-        <div class="nav-links">
+            <li>
+                <a href="#home" class="active">خانه</a>
+            </li>
 
+            <li>
+                <a href="#about">درباره من</a>
+            </li>
 
-            <a href="#about">
-                درباره من
-            </a>
+            <li>
+                <a href="#education">تحصیلات</a>
+            </li>
 
+            <li>
+                <a href="#skills">مهارت‌ها</a>
+            </li>
 
-            <a href="#education">
-                تحصیلات
-            </a>
+            <li>
+                <a href="#experience">سوابق</a>
+            </li>
 
+            <li>
+                <a href="#projects">پروژه‌ها</a>
+            </li>
 
-            <a href="#skills">
-                تخصص‌ها
-            </a>
+            <li>
+                <a href="#contact">تماس</a>
+            </li>
 
-
-            <a href="#certifications">
-                مدارک و دوره‌ها
-            </a>
-
-
-            <a href="#experience">
-                سوابق
-            </a>
-
-
-            <a href="#projects">
-                پروژه‌ها
-            </a>
-
-
-            <a href="#contact">
-                ارتباط
-            </a>
-
-
-        </div>
-
+        </ul>
 
     </div>
-
 </nav>
 
 
-
-<!-- =========================================================
+<!-- =========================
      HERO
-========================================================= -->
+========================= -->
 
-<section class="hero"
-         id="home">
+<main id="home">
 
+<section class="hero">
 
     <div class="container hero-grid">
 
+        <div class="hero-content">
 
-        <div>
-
-
-            <div class="hero-badge">
-
-                <span class="status-dot"></span>
-
-                IT Infrastructure • Network • Data Center
-
+            <div class="eyebrow">
+                IT INFRASTRUCTURE & NETWORK
             </div>
-
 
             <h1>
-
-                مجتبی
-
-                <span>
-                    مهیاری
-                </span>
-
+                Mojtaba
+                <span>Mahyari</span>
             </h1>
 
-
             <div class="hero-title">
-
-                IT Infrastructure & Network Specialist
-
+                IT Infrastructure & Network Administrator
             </div>
-
 
             <p class="hero-description">
-
                 متخصص زیرساخت فناوری اطلاعات، شبکه، دیتاسنتر،
-                مجازی‌سازی، امنیت شبکه، مانیتورینگ و طراحی
-                زیرساخت‌های سازمانی با بیش از ۲۰ سال تجربه تخصصی.
-
+                مجازی‌سازی و امنیت سایبری با بیش از دو دهه تجربه
+                در طراحی، پیاده‌سازی، مدیریت و توسعه زیرساخت‌های
+                سازمانی و دیتاسنتری.
             </p>
 
+            <div class="hero-buttons">
 
-            <div class="hero-actions">
-
-
-                <a href="#projects"
-                   class="btn btn-primary">
-
+                <a href="#projects" class="btn btn-primary">
                     مشاهده پروژه‌ها
-
                 </a>
 
-
-                <a href="#contact"
-                   class="btn btn-outline">
-
-                    ارتباط و همکاری
-
+                <a href="#contact" class="btn btn-secondary">
+                    ارتباط با من
                 </a>
 
-
             </div>
-
-
-            <div class="stats">
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        20+
-                    </div>
-
-                    <div class="stat-label">
-                        Years IT Experience
-                    </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        15+
-                    </div>
-
-                    <div class="stat-label">
-                        Years Professional Work
-                    </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        150+
-                    </div>
-
-                    <div class="stat-label">
-                        Infrastructure Projects
-                    </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        30+
-                    </div>
-
-                    <div class="stat-label">
-                        Technologies
-                    </div>
-
-                </div>
-
-
-            </div>
-
 
         </div>
 
 
-
-        <div class="hero-visual">
-
+        <div class="hero-image">
 
             <div class="profile-frame">
 
-
                 <img
                     src="./images/mojtaba-mahyari.jpeg"
-                    alt="مجتبی مهیاری"
-                    class="profile-image"
-                >
-
+                    alt="Mojtaba Mahyari"
+                    class="profile-image">
 
             </div>
-
-
-            <div class="floating-tech tech-1">
-                VMware
-            </div>
-
-
-            <div class="floating-tech tech-2">
-                FortiGate
-            </div>
-
-
-            <div class="floating-tech tech-3">
-                Network
-            </div>
-
 
         </div>
-
 
     </div>
 
 </section>
 
 
+<!-- =========================
+     STATS
+========================= -->
 
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section id="about">
-
+<section class="stats">
 
     <div class="container">
 
+        <div class="stats-grid">
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    20+
+                </div>
+
+                <div class="stat-label">
+                    Years IT Experience
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    15+
+                </div>
+
+                <div class="stat-label">
+                    Years Professional Work
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    150+
+                </div>
+
+                <div class="stat-label">
+                    Infrastructure Projects
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    30+
+                </div>
+
+                <div class="stat-label">
+                    Technologies
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="container">
 
         <div class="section-header">
 
-
             <div class="section-kicker">
-                ABOUT
+                ABOUT ME
             </div>
 
-
-            <h2>
-                درباره من
+            <h2 class="section-title">
+                زیرساخت، شبکه و امنیت در مقیاس سازمانی
             </h2>
 
-
-            <p>
-                تمرکز اصلی من طراحی، پیاده‌سازی، نگهداری و توسعه
-                زیرساخت‌های فناوری اطلاعات سازمانی است.
+            <p class="section-description">
+                تمرکز من بر طراحی و مدیریت زیرساخت‌هایی است که
+                پایدار، امن، قابل توسعه و قابل مانیتور باشند.
             </p>
-
 
         </div>
 
 
         <div class="about-grid">
 
+            <div class="card">
 
-            <div class="card about-card">
+                <p class="about-text">
 
+                    در طول سال‌های فعالیت حرفه‌ای، در حوزه‌های
+                    شبکه‌های سازمانی، دیتاسنتر، مجازی‌سازی،
+                    سرویس‌های زیرساختی، امنیت شبکه، مانیتورینگ
+                    و طراحی معماری IT فعالیت داشته‌ام.
 
-                <h3>
-                    زیرساخت و شبکه
-                </h3>
+                    <br><br>
 
-
-                <p>
-
-                    طراحی و مدیریت زیرساخت شبکه‌های سازمانی،
-                    دیتاسنتر، تجهیزات ارتباطی، Routing & Switching،
-                    Firewall، VPN، Network Segmentation،
-                    سرویس‌های Microsoft و زیرساخت‌های مجازی.
+                    رویکرد کاری من ترکیبی از طراحی معماری،
+                    پیاده‌سازی، مستندسازی، مانیتورینگ، امنیت
+                    و رفع مشکلات پیچیده زیرساختی است.
 
                 </p>
-
 
             </div>
 
 
+            <div class="card">
 
-            <div class="card about-card">
+                <ul class="about-list">
 
+                    <li>
+                        <span>Specialization</span>
+                        <span>Network & Infrastructure</span>
+                    </li>
 
-                <h3>
-                    رویکرد حرفه‌ای
-                </h3>
+                    <li>
+                        <span>Data Center</span>
+                        <span>Design & Administration</span>
+                    </li>
 
+                    <li>
+                        <span>Virtualization</span>
+                        <span>VMware</span>
+                    </li>
 
-                <p>
+                    <li>
+                        <span>Security</span>
+                        <span>Network Security</span>
+                    </li>
 
-                    تمرکز بر معماری پایدار، امنیت، قابلیت اطمینان،
-                    مانیتورینگ، Disaster Recovery، مستندسازی
-                    و ایجاد زیرساختی که بتواند در بلندمدت توسعه پیدا کند.
+                    <li>
+                        <span>Monitoring</span>
+                        <span>Zabbix / Splunk / Wazuh</span>
+                    </li>
 
-                </p>
-
+                </ul>
 
             </div>
-
 
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      EDUCATION
-========================================================= -->
+========================= -->
 
 <section id="education">
 
-
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 EDUCATION
             </div>
 
-
-            <h2>
+            <h2 class="section-title">
                 تحصیلات
             </h2>
 
-
-            <p>
-                سوابق تحصیلی در حوزه مهندسی نرم‌افزار،
-                فناوری اطلاعات و شبکه‌های کامپیوتری.
+            <p class="section-description">
+                مسیر تحصیلی در حوزه نرم‌افزار، فناوری اطلاعات
+                و شبکه‌های کامپیوتری.
             </p>
-
 
         </div>
 
 
         <div class="education-grid">
 
+            <div class="card education-card">
+
+                <div class="education-icon">
+                    BSc
+                </div>
+
+                <div class="education-degree">
+                    کارشناسی نرم‌افزار
+                </div>
+
+                <div class="education-university">
+                    دانشگاه آزاد اسلامی
+                </div>
+
+            </div>
+
 
             <div class="card education-card">
 
-
-                <div class="education-degree">
-                    MASTER OF INFORMATION TECHNOLOGY
+                <div class="education-icon">
+                    MSc
                 </div>
 
-
-                <h3>
+                <div class="education-degree">
                     کارشناسی ارشد فناوری اطلاعات
-                </h3>
-
-
-                <p>
-
-                    گرایش شبکه‌های کامپیوتری
-
-                    <br>
-
-                    دانشگاه رفسنجان
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="card education-card">
-
-
-                <div class="education-degree">
-                    BACHELOR OF SOFTWARE ENGINEERING
                 </div>
 
+                <div class="education-university">
+                    دانشگاه آزاد اسلامی
+                </div>
 
-                <h3>
-                    کارشناسی مهندسی نرم‌افزار
-                </h3>
-
-
-                <p>
-
-                    دانشگاه آزاد اسلامی اصفهان
-
-                </p>
-
+                <div class="education-field">
+                    گرایش شبکه‌های کامپیوتری
+                </div>
 
             </div>
-
 
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      SKILLS
-========================================================= -->
+========================= -->
 
 <section id="skills">
 
-
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 EXPERTISE
             </div>
 
-
-            <h2>
+            <h2 class="section-title">
                 حوزه‌های تخصصی
             </h2>
 
+            <p class="section-description">
+                مجموعه‌ای از حوزه‌هایی که در آن‌ها تجربه عملی
+                و مدیریتی دارم.
+            </p>
 
         </div>
 
 
         <div class="skills-grid">
 
-
-            <div class="card skill-card">
+            <div class="skill-card">
 
                 <div class="skill-icon">
-                    NW
+                    NET
                 </div>
 
                 <h3>
@@ -2287,14 +1729,15 @@
                 </h3>
 
                 <p>
-                    طراحی و مدیریت شبکه‌های سازمانی،
-                    Routing، Switching، VLAN، WAN و LAN.
+                    طراحی و مدیریت شبکه‌های LAN / WAN،
+                    Routing، Switching، VLAN، VPN و معماری
+                    شبکه‌های سازمانی.
                 </p>
 
             </div>
 
 
-            <div class="card skill-card">
+            <div class="skill-card">
 
                 <div class="skill-icon">
                     DC
@@ -2305,14 +1748,32 @@
                 </h3>
 
                 <p>
-                    زیرساخت دیتاسنتر، سرورها، تجهیزات شبکه،
-                    Storage، Power و طراحی Redundancy.
+                    طراحی، مدیریت و نگهداری زیرساخت دیتاسنتر،
+                    سرورها، ذخیره‌سازی، رک، UPS و Redundancy.
                 </p>
 
             </div>
 
 
-            <div class="card skill-card">
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    SEC
+                </div>
+
+                <h3>
+                    Cyber Security
+                </h3>
+
+                <p>
+                    امنیت شبکه، Firewall، Segmentation،
+                    Access Control، Monitoring و Security Operations.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
 
                 <div class="skill-icon">
                     VM
@@ -2323,68 +1784,14 @@
                 </h3>
 
                 <p>
-                    VMware ESXi، vCenter، VDI، SRM
-                    و زیرساخت‌های مجازی‌سازی.
+                    VMware vSphere، ESXi، vCenter،
+                    Virtual Machines، HA و زیرساخت مجازی.
                 </p>
 
             </div>
 
 
-            <div class="card skill-card">
-
-                <div class="skill-icon">
-                    FW
-                </div>
-
-                <h3>
-                    Network Security
-                </h3>
-
-                <p>
-                    Firewall، VPN، Segmentation،
-                    Access Control و امنیت زیرساخت.
-                </p>
-
-            </div>
-
-
-            <div class="card skill-card">
-
-                <div class="skill-icon">
-                    DR
-                </div>
-
-                <h3>
-                    Disaster Recovery
-                </h3>
-
-                <p>
-                    Backup، Replication، Recovery
-                    و طراحی سناریوهای تداوم سرویس.
-                </p>
-
-            </div>
-
-
-            <div class="card skill-card">
-
-                <div class="skill-icon">
-                    MON
-                </div>
-
-                <h3>
-                    Monitoring
-                </h3>
-
-                <p>
-                    Zabbix، Splunk، Wazuh و
-                    پایش متمرکز زیرساخت.
-                </p>
-
-            </div>
-
-
-            <div class="card skill-card">
+            <div class="skill-card">
 
                 <div class="skill-icon">
                     AD
@@ -2396,47 +1803,82 @@
 
                 <p>
                     Active Directory، Windows Server،
-                    DNS، DHCP و سرویس‌های سازمانی.
+                    DNS، DHCP، Group Policy و سرویس‌های سازمانی.
                 </p>
 
             </div>
 
 
-            <div class="card skill-card">
+            <div class="skill-card">
 
                 <div class="skill-icon">
-                    AI
+                    MON
                 </div>
 
                 <h3>
-                    AI Infrastructure
+                    Monitoring
                 </h3>
 
                 <p>
-                    طراحی زیرساخت برای اجرای مدل‌های
-                    هوش مصنوعی و Offline AI.
+                    Zabbix، Splunk، Wazuh و طراحی سیستم‌های
+                    مانیتورینگ و لاگ مرکزی.
                 </p>
 
             </div>
 
 
-            <div class="card skill-card">
+            <div class="skill-card">
 
                 <div class="skill-icon">
-                    VDI
+                    FW
                 </div>
 
                 <h3>
-                    VDI Infrastructure
+                    Firewall
                 </h3>
 
                 <p>
-                    طراحی و مدیریت زیرساخت دسکتاپ مجازی
-                    برای محیط‌های سازمانی.
+                    FortiGate، Firewall Policy، NAT، VPN،
+                    Security Profiles و Network Protection.
                 </p>
 
             </div>
 
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    BK
+                </div>
+
+                <h3>
+                    Backup & Recovery
+                </h3>
+
+                <p>
+                    طراحی Backup، Veeam، Recovery،
+                    Disaster Recovery و حفاظت از داده‌های سازمانی.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    ADM
+                </div>
+
+                <h3>
+                    IT Administration
+                </h3>
+
+                <p>
+                    مدیریت زیرساخت IT، مستندسازی، استانداردسازی،
+                    Troubleshooting و مدیریت سرویس‌های سازمانی.
+                </p>
+
+            </div>
 
         </div>
 
@@ -2445,293 +1887,88 @@
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      CERTIFICATIONS
-========================================================= -->
+========================= -->
 
-<section id="certifications">
-
+<section>
 
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 CERTIFICATIONS & TRAINING
             </div>
 
-
-            <h2>
-                مدارک و دوره‌های تخصصی
+            <h2 class="section-title">
+                دوره‌ها و مدارک تخصصی
             </h2>
-
-
-            <p>
-                مجموعه‌ای از مدارک و دوره‌های تخصصی حوزه شبکه،
-                امنیت، مجازی‌سازی و زیرساخت.
-            </p>
-
 
         </div>
 
 
         <div class="cert-grid">
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    CISCO
-                </div>
-
-                <div>
-
-                    <h3>
-                        CCNA — Switching & Routing
-                    </h3>
-
-                    <p>
-                        Network Infrastructure
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">CCNA</div>
+                <div class="cert-name">Switching & Routing</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    CISCO
-                </div>
-
-                <div>
-
-                    <h3>
-                        CCNA — Security
-                    </h3>
-
-                    <p>
-                        Network Security
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">CCNA</div>
+                <div class="cert-name">Security</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    CISCO
-                </div>
-
-                <div>
-
-                    <h3>
-                        CCNP — Routing
-                    </h3>
-
-                    <p>
-                        Advanced Routing
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">CCNP</div>
+                <div class="cert-name">Routing</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    CISCO
-                </div>
-
-                <div>
-
-                    <h3>
-                        CCNP — Security
-                    </h3>
-
-                    <p>
-                        Advanced Network Security
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">CCNP</div>
+                <div class="cert-name">Security</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    MIKROTIK
-                </div>
-
-                <div>
-
-                    <h3>
-                        MTCNA
-                    </h3>
-
-                    <p>
-                        MikroTik Certified Network Associate
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">MTCNA</div>
+                <div class="cert-name">MikroTik Certified Network Associate</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    MIKROTIK
-                </div>
-
-                <div>
-
-                    <h3>
-                        MTCNWA
-                    </h3>
-
-                    <p>
-                        MikroTik Wireless Training
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">MTCNWA</div>
+                <div class="cert-name">MikroTik Wireless</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    VMWARE
-                </div>
-
-                <div>
-
-                    <h3>
-                        VMware vSphere 7 — Optimize
-                    </h3>
-
-                    <p>
-                        VMware Infrastructure
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">VMware</div>
+                <div class="cert-name">vSphere 7 Optimize</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    VMWARE
-                </div>
-
-                <div>
-
-                    <h3>
-                        VMware SRM
-                    </h3>
-
-                    <p>
-                        Site Recovery Manager
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">VMware</div>
+                <div class="cert-name">Site Recovery Manager</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    VMWARE
-                </div>
-
-                <div>
-
-                    <h3>
-                        VMware VDI
-                    </h3>
-
-                    <p>
-                        Virtual Desktop Infrastructure
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">VMware</div>
+                <div class="cert-name">VDI</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    FORTINET
-                </div>
-
-                <div>
-
-                    <h3>
-                        FortiGate
-                    </h3>
-
-                    <p>
-                        Network Security & Firewall
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">FortiGate</div>
+                <div class="cert-name">Network Security</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    EC-COUNCIL
-                </div>
-
-                <div>
-
-                    <h3>
-                        CEH / Penetration Testing
-                    </h3>
-
-                    <p>
-                        Cyber Security
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">CEH</div>
+                <div class="cert-name">Penetration Testing</div>
             </div>
 
-
-            <div class="card cert-card">
-
-                <div class="cert-type">
-                    MICROSOFT
-                </div>
-
-                <div>
-
-                    <h3>
-                        MCSE 2012
-                    </h3>
-
-                    <p>
-                        Microsoft Infrastructure
-                    </p>
-
-                </div>
-
+            <div class="cert-card">
+                <div class="cert-code">MCSE</div>
+                <div class="cert-name">MCSE 2012</div>
             </div>
-
 
         </div>
 
@@ -2740,35 +1977,28 @@
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      EXPERIENCE
-========================================================= -->
+========================= -->
 
 <section id="experience">
 
-
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 EXPERIENCE
             </div>
 
-
-            <h2>
+            <h2 class="section-title">
                 سوابق حرفه‌ای
             </h2>
 
-
-            <p>
-                تجربه در طراحی، اجرا، مدیریت و پشتیبانی
-                زیرساخت‌های فناوری اطلاعات و شبکه.
+            <p class="section-description">
+                تجربه در طراحی، مدیریت و اجرای زیرساخت‌های
+                فناوری اطلاعات و شبکه در سازمان‌ها و مجموعه‌های مختلف.
             </p>
-
 
         </div>
 
@@ -2776,15 +2006,13 @@
         <div class="timeline">
 
 
-            <!-- QESHM -->
-
             <div class="timeline-item">
 
                 <div class="timeline-dot"></div>
 
-                <div class="card experience-card">
+                <div class="timeline-card">
 
-                    <div class="experience-company">
+                    <div class="timeline-company">
                         QESHM FREE ZONE
                     </div>
 
@@ -2792,16 +2020,14 @@
                         سازمان منطقه آزاد قشم
                     </h3>
 
-                    <p>
-
+                    <div class="timeline-role">
                         IT Infrastructure & Network Administrator
+                    </div>
 
-                        <br><br>
-
-                        مدیریت و توسعه شبکه، دیتاسنتر،
-                        مجازی‌سازی، امنیت شبکه، مانیتورینگ،
-                        سرویس‌های سازمانی و Disaster Recovery.
-
+                    <p>
+                        مدیریت و توسعه زیرساخت شبکه، دیتاسنتر،
+                        سرورها، مجازی‌سازی، امنیت، مانیتورینگ
+                        و سرویس‌های زیرساختی سازمان.
                     </p>
 
                 </div>
@@ -2809,32 +2035,27 @@
             </div>
 
 
-            <!-- ICAN -->
-
             <div class="timeline-item">
 
                 <div class="timeline-dot"></div>
 
-                <div class="card experience-card">
+                <div class="timeline-card">
 
-                    <div class="experience-company">
-                        ICAN — ISFAHAN
+                    <div class="timeline-company">
+                        ICAN
                     </div>
 
                     <h3>
-                        شرکت ICAN اصفهان
+                        شرکت ICAN
                     </h3>
 
-                    <p>
-
+                    <div class="timeline-role">
                         Network & Data Center Administrator
+                    </div>
 
-                        <br><br>
-
-                        مدیریت و پشتیبانی شبکه و زیرساخت
-                        دیتاسنتر، سرویس‌های شبکه و تجهیزات
-                        ارتباطی.
-
+                    <p>
+                        مدیریت شبکه و زیرساخت دیتاسنتر و
+                        سرویس‌های سازمانی.
                     </p>
 
                 </div>
@@ -2842,31 +2063,27 @@
             </div>
 
 
-            <!-- CULTURAL HERITAGE -->
-
             <div class="timeline-item">
 
                 <div class="timeline-dot"></div>
 
-                <div class="card experience-card">
+                <div class="timeline-card">
 
-                    <div class="experience-company">
+                    <div class="timeline-company">
                         ISFAHAN CULTURAL HERITAGE
                     </div>
 
                     <h3>
-                        میراث فرهنگی اصفهان
+                        میراث فرهنگی
                     </h3>
 
-                    <p>
-
+                    <div class="timeline-role">
                         Network & Data Center Administrator
+                    </div>
 
-                        <br><br>
-
-                        یک سال فعالیت در حوزه مدیریت،
-                        نگهداری و پشتیبانی شبکه و دیتاسنتر.
-
+                    <p>
+                        مدیریت زیرساخت شبکه و دیتاسنتر و
+                        پشتیبانی سرویس‌های IT.
                     </p>
 
                 </div>
@@ -2874,32 +2091,27 @@
             </div>
 
 
-            <!-- WATER -->
-
             <div class="timeline-item">
 
                 <div class="timeline-dot"></div>
 
-                <div class="card experience-card">
+                <div class="timeline-card">
 
-                    <div class="experience-company">
-                        ISFAHAN WATER & WASTEWATER
+                    <div class="timeline-company">
+                        WATER & WASTEWATER
                     </div>
 
                     <h3>
-                        شرکت مشاور آب و فاضلاب اصفهان
+                        شرکت مشاور آب و فاضلاب
                     </h3>
 
-                    <p>
-
+                    <div class="timeline-role">
                         Network Consultant & Communication Network Designer
+                    </div>
 
-                        <br><br>
-
-                        مشاور و طراح شبکه ارتباطی،
-                        معماری شبکه، ارتباطات سازمانی
-                        و زیرساخت ارتباطی.
-
+                    <p>
+                        طراحی شبکه‌های ارتباطی و ارائه مشاوره
+                        تخصصی در حوزه زیرساخت شبکه.
                     </p>
 
                 </div>
@@ -2907,32 +2119,27 @@
             </div>
 
 
-            <!-- CHAMBER -->
-
             <div class="timeline-item">
 
                 <div class="timeline-dot"></div>
 
-                <div class="card experience-card">
+                <div class="timeline-card">
 
-                    <div class="experience-company">
-                        ISFAHAN CHAMBER OF COMMERCE
+                    <div class="timeline-company">
+                        CHAMBER OF COMMERCE
                     </div>
 
                     <h3>
-                        اتاق بازرگانی اصفهان
+                        اتاق بازرگانی
                     </h3>
 
-                    <p>
-
+                    <div class="timeline-role">
                         IT Infrastructure & Data Center
+                    </div>
 
-                        <br><br>
-
-                        فعالیت در حوزه شبکه، دیتاسنتر،
-                        سرورها، مجازی‌سازی و ارتباطات
-                        زیرساختی.
-
+                    <p>
+                        فعالیت در حوزه زیرساخت فناوری اطلاعات
+                        و دیتاسنتر.
                     </p>
 
                 </div>
@@ -2940,32 +2147,27 @@
             </div>
 
 
-            <!-- GAS -->
-
             <div class="timeline-item">
 
                 <div class="timeline-dot"></div>
 
-                <div class="card experience-card">
+                <div class="timeline-card">
 
-                    <div class="experience-company">
-                        ISFAHAN GAS COMPANY
+                    <div class="timeline-company">
+                        GAS COMPANY
                     </div>
 
                     <h3>
-                        شرکت گاز استان اصفهان
+                        شرکت گاز
                     </h3>
 
-                    <p>
-
+                    <div class="timeline-role">
                         IT Infrastructure & Data Center
+                    </div>
 
-                        <br><br>
-
-                        فعالیت در حوزه زیرساخت IT،
-                        شبکه، دیتاسنتر، سرورها
-                        و مجازی‌سازی.
-
+                    <p>
+                        فعالیت در حوزه زیرساخت شبکه، سرورها
+                        و دیتاسنتر.
                     </p>
 
                 </div>
@@ -2980,336 +2182,177 @@
 </section>
 
 
-
-<!-- =========================================================
-     FEATURED AI PROJECT
-========================================================= -->
+<!-- =========================
+     FEATURED AI
+========================= -->
 
 <section>
 
-
     <div class="container">
 
+        <div class="card featured">
 
-        <div class="featured">
+            <div class="featured-content">
 
+                <div class="featured-badge">
+                    AI & MODERN INFRASTRUCTURE
+                </div>
 
-            <div class="section-kicker">
-                FEATURED PROJECT
-            </div>
+                <h3>
+                    زیرساخت هوشمند و نسل جدید IT
+                </h3>
 
-
-            <h3>
-                AI Infrastructure & Offline AI
-            </h3>
-
-
-            <p>
-
-                طراحی و بررسی زیرساخت‌های مورد نیاز برای
-                اجرای سرویس‌ها و مدل‌های هوش مصنوعی در
-                محیط‌های سازمانی و مستقل از اینترنت؛
-                با تمرکز بر امنیت، منابع پردازشی، ذخیره‌سازی،
-                شبکه و کنترل دسترسی.
-
-            </p>
-
-
-            <div class="tag-list">
-
-
-                <span class="tag">
-                    AI Infrastructure
-                </span>
-
-
-                <span class="tag">
-                    Offline AI
-                </span>
-
-
-                <span class="tag">
-                    Private AI
-                </span>
-
-
-                <span class="tag">
-                    GPU Infrastructure
-                </span>
-
-
-                <span class="tag">
-                    Network Security
-                </span>
-
-
-                <span class="tag">
-                    Data Center
-                </span>
-
+                <p>
+                    علاقه‌مند به ترکیب زیرساخت‌های سنتی IT با
+                    فناوری‌های جدید مانند هوش مصنوعی، اتوماسیون،
+                    مانیتورینگ هوشمند، تحلیل لاگ و امنیت مبتنی
+                    بر داده برای ایجاد زیرساخت‌های قابل مشاهده،
+                    قابل کنترل و قابل توسعه.
+                </p>
 
             </div>
-
 
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      PROJECTS
-========================================================= -->
+========================= -->
 
 <section id="projects">
 
-
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 PROJECTS
             </div>
 
-
-            <h2>
-                پروژه‌ها و تجربه‌های اجرایی
+            <h2 class="section-title">
+                پروژه‌ها و فعالیت‌های تخصصی
             </h2>
 
-
-            <p>
-                مجموعه‌ای از حوزه‌های پروژه‌ای که در طراحی،
-                اجرا و مدیریت زیرساخت‌های سازمانی دنبال شده‌اند.
+            <p class="section-description">
+                نمونه‌ای از حوزه‌های پروژه‌ای و تخصصی.
             </p>
-
 
         </div>
 
 
         <div class="projects-grid">
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    01 / NETWORK
-                </div>
-
-                <h3>
-                    زیرساخت شبکه سازمانی
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <h3>Enterprise Network Infrastructure</h3>
                 <p>
-                    طراحی و مدیریت شبکه‌های LAN، WAN،
-                    Routing، Switching، VLAN و ارتباطات سازمانی.
+                    طراحی و مدیریت زیرساخت شبکه سازمانی،
+                    VLAN، Routing، Switching و Segmentation.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    02 / VMWARE
-                </div>
-
-                <h3>
-                    VMware Infrastructure
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <h3>Data Center Infrastructure</h3>
                 <p>
-                    طراحی و مدیریت ESXi، vCenter،
-                    Virtual Machine، VDI و زیرساخت مجازی.
+                    طراحی و مدیریت زیرساخت دیتاسنتر،
+                    سرورها، رک، برق و سرویس‌های حیاتی.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    03 / DATA CENTER
-                </div>
-
-                <h3>
-                    Data Center Infrastructure
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <h3>Virtualization Infrastructure</h3>
                 <p>
-                    طراحی و نگهداری سرورها، Storage،
-                    تجهیزات شبکه، Power و اجزای دیتاسنتر.
+                    پیاده‌سازی و مدیریت VMware vSphere،
+                    ESXi و vCenter.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    04 / SECURITY
-                </div>
-
-                <h3>
-                    Network Security
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">04</div>
+                <h3>Firewall & Network Security</h3>
                 <p>
-                    Firewall، VPN، Segmentation،
-                    Access Control و طراحی معماری امن شبکه.
+                    طراحی سیاست‌های امنیتی، Firewall،
+                    NAT، VPN و کنترل دسترسی.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    05 / MONITORING
-                </div>
-
-                <h3>
-                    Monitoring & Observability
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">05</div>
+                <h3>Monitoring Infrastructure</h3>
                 <p>
-                    پیاده‌سازی و مدیریت Zabbix، Splunk،
-                    Wazuh و سیستم‌های مانیتورینگ.
+                    طراحی و پیاده‌سازی سیستم‌های مانیتورینگ
+                    و هشداردهی زیرساخت.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    06 / BACKUP
-                </div>
-
-                <h3>
-                    Backup & Virtualization
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">06</div>
+                <h3>Centralized Logging</h3>
                 <p>
-                    طراحی Backup، Replication،
-                    Virtualization و مدیریت چرخه بازیابی.
+                    جمع‌آوری و تحلیل متمرکز لاگ‌ها برای
+                    مشاهده و بررسی رخدادهای زیرساخت.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    07 / VDI
-                </div>
-
-                <h3>
-                    VDI Infrastructure
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">07</div>
+                <h3>Backup & Disaster Recovery</h3>
                 <p>
-                    طراحی زیرساخت دسکتاپ مجازی
-                    برای کاربران و محیط‌های سازمانی.
+                    طراحی استراتژی Backup و Recovery
+                    برای سرویس‌های حیاتی.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    08 / DR
-                </div>
-
-                <h3>
-                    Disaster Recovery
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">08</div>
+                <h3>Microsoft Infrastructure</h3>
                 <p>
-                    طراحی سناریوهای Recovery،
-                    Replication و تداوم سرویس.
+                    Active Directory، DNS، DHCP،
+                    Group Policy و Windows Server.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    09 / SIEM
-                </div>
-
-                <h3>
-                    Security Monitoring
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">09</div>
+                <h3>Security Monitoring</h3>
                 <p>
-                    جمع‌آوری، تحلیل و مانیتورینگ
-                    رویدادهای امنیتی و زیرساختی.
+                    پیاده‌سازی ابزارهای امنیتی و مانیتورینگ
+                    برای افزایش Visibility.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    10 / DESIGN
-                </div>
-
-                <h3>
-                    Network Design
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">10</div>
+                <h3>Network Segmentation</h3>
                 <p>
-                    طراحی معماری شبکه و ارتباطات
-                    برای زیرساخت‌های سازمانی.
+                    طراحی تفکیک شبکه‌ها و کنترل ارتباط
+                    بین Segmentهای مختلف.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    11 / VOIP
-                </div>
-
-                <h3>
-                    VoIP Infrastructure
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">11</div>
+                <h3>Infrastructure Documentation</h3>
                 <p>
-                    طراحی و مدیریت زیرساخت
-                    ارتباطات تلفنی و VoIP.
+                    مستندسازی تجهیزات، سرویس‌ها، ارتباطات
+                    و معماری زیرساخت.
                 </p>
-
             </div>
 
-
-            <div class="card project-card">
-
-                <div class="project-number">
-                    12 / CONSULTING
-                </div>
-
-                <h3>
-                    IT Infrastructure Consulting
-                </h3>
-
+            <div class="project-card">
+                <div class="project-number">12</div>
+                <h3>IT Infrastructure Optimization</h3>
                 <p>
-                    مشاوره، بررسی وضعیت موجود،
-                    طراحی معماری و ارائه راهکارهای زیرساختی.
+                    تحلیل، استانداردسازی و بهینه‌سازی
+                    زیرساخت‌های موجود.
                 </p>
-
             </div>
-
 
         </div>
 
@@ -3318,183 +2361,80 @@
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      TECHNOLOGY STACK
-========================================================= -->
+========================= -->
 
 <section>
 
-
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 TECHNOLOGY STACK
             </div>
 
-
-            <h2>
+            <h2 class="section-title">
                 فناوری‌ها و ابزارها
             </h2>
-
 
         </div>
 
 
         <div class="stack">
 
-
-            <span class="stack-item">
-                Cisco
-            </span>
-
-
-            <span class="stack-item">
-                FortiGate
-            </span>
-
-
-            <span class="stack-item">
-                MikroTik
-            </span>
-
-
-            <span class="stack-item">
-                VMware ESXi
-            </span>
-
-
-            <span class="stack-item">
-                vCenter
-            </span>
-
-
-            <span class="stack-item">
-                VMware SRM
-            </span>
-
-
-            <span class="stack-item">
-                VDI
-            </span>
-
-
-            <span class="stack-item">
-                Windows Server
-            </span>
-
-
-            <span class="stack-item">
-                Active Directory
-            </span>
-
-
-            <span class="stack-item">
-                Linux
-            </span>
-
-
-            <span class="stack-item">
-                Ubuntu
-            </span>
-
-
-            <span class="stack-item">
-                Zabbix
-            </span>
-
-
-            <span class="stack-item">
-                Splunk
-            </span>
-
-
-            <span class="stack-item">
-                Wazuh
-            </span>
-
-
-            <span class="stack-item">
-                Veeam
-            </span>
-
-
-            <span class="stack-item">
-                GLPI
-            </span>
-
-
-            <span class="stack-item">
-                Teleport
-            </span>
-
-
-            <span class="stack-item">
-                Guacamole
-            </span>
-
-
-            <span class="stack-item">
-                VoIP
-            </span>
-
-
-            <span class="stack-item">
-                Cyber Security
-            </span>
-
-
-            <span class="stack-item">
-                Network Design
-            </span>
-
-
-            <span class="stack-item">
-                AI Infrastructure
-            </span>
-
+            <div class="stack-item">Cisco</div>
+            <div class="stack-item">FortiGate</div>
+            <div class="stack-item">MikroTik</div>
+            <div class="stack-item">VMware</div>
+            <div class="stack-item">ESXi</div>
+            <div class="stack-item">vCenter</div>
+            <div class="stack-item">Veeam</div>
+            <div class="stack-item">Windows Server</div>
+            <div class="stack-item">Active Directory</div>
+            <div class="stack-item">Linux</div>
+            <div class="stack-item">Ubuntu</div>
+            <div class="stack-item">Zabbix</div>
+            <div class="stack-item">Splunk</div>
+            <div class="stack-item">Wazuh</div>
+            <div class="stack-item">GLPI</div>
+            <div class="stack-item">Teleport</div>
+            <div class="stack-item">Guacamole</div>
+            <div class="stack-item">Nginx</div>
+            <div class="stack-item">Python</div>
+            <div class="stack-item">Git</div>
+            <div class="stack-item">Docker</div>
 
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      CONTACT
-========================================================= -->
+========================= -->
 
 <section id="contact">
 
-
     <div class="container">
 
-
         <div class="section-header">
-
 
             <div class="section-kicker">
                 CONTACT
             </div>
 
-
-            <h2>
-                ارتباط و همکاری
+            <h2 class="section-title">
+                ارتباط با من
             </h2>
 
-
-            <p>
-                برای پروژه‌های زیرساخت، شبکه، دیتاسنتر،
-                امنیت و مشاوره IT می‌توانید با من در ارتباط باشید.
+            <p class="section-description">
+                برای همکاری، پروژه‌های زیرساختی، مشاوره شبکه
+                و فناوری اطلاعات می‌توانید با من در ارتباط باشید.
             </p>
-
 
         </div>
 
@@ -3502,99 +2442,121 @@
         <div class="contact-grid">
 
 
-            <div class="card contact-card">
+            <div class="contact-info">
+
+                <a
+                    class="contact-item"
+                    href="tel:09134337123">
+
+                    <div class="contact-icon">
+                        TEL
+                    </div>
+
+                    <div>
+
+                        <small>
+                            Mobile
+                        </small>
+
+                        <span>
+                            09134337123
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    class="contact-item"
+                    href="mailto:mojtaba.mahyarimcse@gmail.com">
+
+                    <div class="contact-icon">
+                        @
+                    </div>
+
+                    <div>
+
+                        <small>
+                            Email
+                        </small>
+
+                        <span>
+                            mojtaba.mahyarimcse@gmail.com
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    class="contact-item"
+                    href="https://www.linkedin.com/in/mojtoba-mahyari-8979369a/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <div class="contact-icon">
+                        IN
+                    </div>
+
+                    <div>
+
+                        <small>
+                            LinkedIn
+                        </small>
+
+                        <span>
+                            Mojtaba Mahyari
+                        </span>
+
+                    </div>
+
+                </a>
 
 
                 <div class="contact-item">
 
-                    <div class="contact-label">
-                        MOBILE
+                    <div class="contact-icon">
+                        WEB
                     </div>
 
-                    <div class="contact-value">
-                        09134337123
-                    </div>
+                    <div>
 
-                </div>
+                        <small>
+                            Website
+                        </small>
 
-
-                <div class="contact-item">
-
-                    <div class="contact-label">
-                        EMAIL
-                    </div>
-
-                    <div class="contact-value">
-                        mojtaba.mahyarimcse@gmail.com
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-label">
-                        LINKEDIN
-                    </div>
-
-                    <div class="contact-value">
-
-                        <a
-                            href="https://www.linkedin.com/in/mojtoba-mahyari-8979369a/"
-                            target="_blank"
-                            rel="noopener"
-                        >
-
-                            linkedin.com/in/mojtoba-mahyari
-
-                        </a>
+                        <span>
+                            mahyari.evonex.ir
+                        </span>
 
                     </div>
 
                 </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-label">
-                        WEBSITE
-                    </div>
-
-                    <div class="contact-value">
-                        mahyari.evonex.ir
-                    </div>
-
-                </div>
-
 
             </div>
 
 
+            <div class="card">
 
-            <div class="card contact-card">
-
-
-                <form id="contactForm">
-
+                <form
+                    id="contactForm"
+                    class="contact-form">
 
                     <div class="form-row">
-
 
                         <input
                             type="text"
                             id="name"
                             placeholder="نام و نام خانوادگی"
-                            required
-                        >
-
+                            required>
 
                         <input
                             type="tel"
-                            id="phone"
+                            id="mobile"
                             placeholder="شماره موبایل"
-                            required
-                        >
-
+                            required>
 
                     </div>
 
@@ -3602,398 +2564,251 @@
                     <input
                         type="email"
                         id="email"
-                        placeholder="ایمیل"
-                        required
-                    >
-
-
-                    <input
-                        type="text"
-                        id="subject"
-                        placeholder="موضوع"
-                        required
-                    >
+                        placeholder="ایمیل">
 
 
                     <textarea
                         id="message"
                         placeholder="پیام شما..."
-                        required
-                    ></textarea>
+                        required></textarea>
 
 
-                    <input
-                        type="text"
-                        id="website"
-                        class="honeypot"
-                        tabindex="-1"
-                        autocomplete="off"
-                    >
+                    <div
+                        id="formMessage"
+                        class="form-message">
+                    </div>
 
 
                     <button
                         type="submit"
-                        class="btn btn-primary"
-                    >
+                        class="btn btn-primary">
 
-                        ارسال درخواست
+                        ارسال پیام
 
                     </button>
 
-
-                    <div
-                        id="formStatus"
-                        class="form-status"
-                    ></div>
-
-
                 </form>
-
 
             </div>
 
-
         </div>
-
 
     </div>
 
 </section>
 
+</main>
 
 
-<!-- =========================================================
+<!-- =========================
      FOOTER
-========================================================= -->
+========================= -->
 
 <footer>
 
+    <div class="container">
 
-    <div class="container footer-inner">
+        © 2026
+        <span>
+            Mojtaba Mahyari
+        </span>
 
-
-        <div>
-
-            © 2026 Mojtaba Mahyari
-
-        </div>
-
-
-        <div class="footer-brand">
-
-            EVONEX
-
-        </div>
-
-
-        <div>
-
-            IT Infrastructure • Network • Data Center
-
-        </div>
-
+        — IT Infrastructure & Network Administrator
 
     </div>
-
 
 </footer>
 
 
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
 
+    /* =========================
+       SUPABASE
+    ========================= */
 
-/* =========================================================
-   SUPABASE CONFIG
-========================================================= */
+    const SUPABASE_URL =
+        "YOUR_SUPABASE_URL";
 
-const SUPABASE_URL =
-    "YOUR_SUPABASE_URL";
+    const SUPABASE_PUBLISHABLE_KEY =
+        "YOUR_SUPABASE_PUBLISHABLE_KEY";
 
 
-const SUPABASE_PUBLISHABLE_KEY =
-    "YOUR_SUPABASE_PUBLISHABLE_KEY";
+    let supabaseClient = null;
 
+    if (
+        SUPABASE_URL !== "YOUR_SUPABASE_URL" &&
+        SUPABASE_PUBLISHABLE_KEY !== "YOUR_SUPABASE_PUBLISHABLE_KEY"
+    ) {
 
-let supabaseClient = null;
+        supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
 
+    }
 
-if (
 
-    SUPABASE_URL !== "YOUR_SUPABASE_URL" &&
+    /* =========================
+       CONTACT FORM
+    ========================= */
 
-    SUPABASE_PUBLISHABLE_KEY !==
-    "YOUR_SUPABASE_PUBLISHABLE_KEY"
+    const contactForm =
+        document.getElementById("contactForm");
 
-) {
+    const formMessage =
+        document.getElementById("formMessage");
 
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
-        );
 
-}
+    contactForm.addEventListener(
+        "submit",
+        async function(event) {
 
+            event.preventDefault();
 
+            const name =
+                document.getElementById("name").value.trim();
 
-/* =========================================================
-   CONTACT FORM
-========================================================= */
+            const mobile =
+                document.getElementById("mobile").value.trim();
 
-const contactForm =
-    document.getElementById("contactForm");
+            const email =
+                document.getElementById("email").value.trim();
 
+            const message =
+                document.getElementById("message").value.trim();
 
-const formStatus =
-    document.getElementById("formStatus");
 
+            const mobileRegex =
+                /^09\d{9}$/;
 
-contactForm.addEventListener(
 
-    "submit",
+            if (!mobileRegex.test(mobile)) {
 
-    async function(event) {
+                formMessage.textContent =
+                    "لطفاً شماره موبایل را به صورت صحیح وارد کنید.";
 
+                return;
 
-        event.preventDefault();
+            }
 
 
-        formStatus.textContent =
-            "در حال ارسال درخواست...";
+            if (!supabaseClient) {
 
+                formMessage.textContent =
+                    "فرم در حال حاضر به پایگاه داده متصل نیست.";
 
-        /* Honeypot */
+                return;
 
-        const honeypot =
-            document
-                .getElementById("website")
-                .value;
+            }
 
 
-        if (honeypot.trim() !== "") {
+            formMessage.textContent =
+                "در حال ارسال پیام...";
 
-            formStatus.textContent =
-                "درخواست ارسال شد.";
 
-            contactForm.reset();
+            try {
 
-            return;
-        }
+                const { error } =
+                    await supabaseClient
+                        .from("contact_requests")
+                        .insert([
+                            {
+                                name: name,
+                                mobile: mobile,
+                                email: email,
+                                message: message,
+                                status: "جدید"
+                            }
+                        ]);
 
 
-        /* Get values */
+                if (error) {
 
-        const name =
-            document
-                .getElementById("name")
-                .value
-                .trim();
+                    throw error;
 
+                }
 
-        const phone =
-            document
-                .getElementById("phone")
-                .value
-                .trim();
 
+                formMessage.textContent =
+                    "پیام شما با موفقیت ارسال شد.";
 
-        const email =
-            document
-                .getElementById("email")
-                .value
-                .trim();
+                contactForm.reset();
 
 
-        const subject =
-            document
-                .getElementById("subject")
-                .value
-                .trim();
-
-
-        const message =
-            document
-                .getElementById("message")
-                .value
-                .trim();
-
-
-
-        /* Iranian mobile validation */
-
-        const phoneRegex =
-            /^(?:\+98|0098|98|0)?9\d{9}$/;
-
-
-        const normalizedPhone =
-            phone
-                .replace(/\s+/g, "")
-                .replace(/-/g, "");
-
-
-        if (!phoneRegex.test(normalizedPhone)) {
-
-            formStatus.textContent =
-                "لطفاً شماره موبایل معتبر وارد کنید.";
-
-            return;
-        }
-
-
-
-        /* Supabase check */
-
-        if (!supabaseClient) {
-
-            formStatus.textContent =
-                "اتصال فرم به پایگاه داده هنوز تنظیم نشده است.";
-
-            return;
-        }
-
-
-
-        try {
-
-
-            const { error } =
-                await supabaseClient
-
-                    .from("contact_requests")
-
-                    .insert([
-
-                        {
-
-                            name: name,
-
-                            phone: phone,
-
-                            email: email,
-
-                            subject: subject,
-
-                            message: message,
-
-                            status: "جدید"
-
-                        }
-
-                    ]);
-
-
-            if (error) {
+            } catch (error) {
 
                 console.error(error);
 
-                formStatus.textContent =
-                    "ارسال درخواست با خطا مواجه شد.";
+                formMessage.textContent =
+                    "ارسال پیام با خطا مواجه شد. لطفاً دوباره تلاش کنید.";
 
-                return;
             }
-
-
-            formStatus.textContent =
-                "درخواست شما با موفقیت ارسال شد.";
-
-
-            contactForm.reset();
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            formStatus.textContent =
-                "خطایی در ارسال درخواست رخ داد.";
 
         }
-
-    }
-
-);
-
-
-
-/* =========================================================
-   NAVIGATION ACTIVE EFFECT
-========================================================= */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
     );
 
 
-const navLinks =
-    document.querySelectorAll(
-        ".nav-links a"
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================= */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
+
+
+    window.addEventListener(
+        "scroll",
+        function() {
+
+            let current = "";
+
+            sections.forEach(
+                function(section) {
+
+                    const sectionTop =
+                        section.offsetTop - 130;
+
+                    const sectionHeight =
+                        section.offsetHeight;
+
+                    if (
+                        window.scrollY >= sectionTop &&
+                        window.scrollY < sectionTop + sectionHeight
+                    ) {
+
+                        current =
+                            section.getAttribute("id");
+
+                    }
+
+                }
+            );
+
+
+            navLinks.forEach(
+                function(link) {
+
+                    link.classList.remove("active");
+
+                    if (
+                        link.getAttribute("href") === "#" + current
+                    ) {
+
+                        link.classList.add("active");
+
+                    }
+
+                }
+            );
+
+        }
     );
-
-
-window.addEventListener(
-
-    "scroll",
-
-    () => {
-
-
-        let current = "";
-
-
-        sections.forEach(section => {
-
-
-            const sectionTop =
-                section.offsetTop - 120;
-
-
-            if (
-                window.scrollY >= sectionTop
-            ) {
-
-                current =
-                    section.getAttribute("id");
-
-            }
-
-        });
-
-
-        navLinks.forEach(link => {
-
-
-            link.style.color = "";
-
-
-            if (
-
-                link.getAttribute("href") ===
-                "#" + current
-
-            ) {
-
-                link.style.color =
-                    "var(--cyan)";
-
-            }
-
-        });
-
-
-    }
-
-);
-
 
 </script>
 
-
 </body>
-
 </html>
