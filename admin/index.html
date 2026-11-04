@@ -1,270 +1,1115 @@
 
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080e1c">
+
 <title>EVONEX | Admin Panel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080e1c;color:#edf4ff;font-family:Vazirmatn,sans-serif}
-.container{max-width:1150px;margin:auto;padding:25px 16px}
-header{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:25px}
-.logo{display:flex;align-items:center;gap:12px}
-.logo img{width:45px;height:45px;object-fit:contain}
+
+body{
+ margin:0;
+ background:#080e1c;
+ color:#edf4ff;
+ font-family:Vazirmatn,sans-serif;
+}
+
+.container{
+ max-width:1150px;
+ margin:auto;
+ padding:25px 16px;
+}
+
+header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
+ flex-wrap:wrap;
+ margin-bottom:25px;
+}
+
+.logo{
+ display:flex;
+ align-items:center;
+ gap:12px;
+}
+
+.logo img{
+ width:45px;
+ height:45px;
+ object-fit:contain;
+}
+
 h1{font-size:22px;margin:0}
-p{color:#91a5c2}
-.panel{background:#111c30;border:1px solid #263750;border-radius:17px;padding:22px;margin-bottom:18px}
-input,textarea,select{width:100%;padding:12px;background:#091425;border:1px solid #31445f;border-radius:9px;color:white;font:inherit;margin:7px 0 15px}
-button{border:0;border-radius:9px;padding:10px 16px;background:#3196f5;color:white;font:inherit;font-weight:700;cursor:pointer}
-button:disabled{opacity:.5}
+p{color:#91a5c2;line-height:1.9}
+
+.panel{
+ background:#111c30;
+ border:1px solid #263750;
+ border-radius:17px;
+ padding:22px;
+ margin-bottom:18px;
+}
+
+input,textarea,select{
+ width:100%;
+ padding:12px;
+ background:#091425;
+ border:1px solid #31445f;
+ border-radius:9px;
+ color:white;
+ font:inherit;
+ margin:7px 0 15px;
+}
+
+input:focus,select:focus,textarea:focus{
+ outline:2px solid #3196f5;
+ border-color:transparent;
+}
+
+button{
+ border:0;
+ border-radius:9px;
+ padding:10px 16px;
+ background:#3196f5;
+ color:white;
+ font:inherit;
+ font-weight:700;
+ cursor:pointer;
+}
+
+button:disabled{
+ opacity:.5;
+ cursor:not-allowed;
+}
+
 .danger{background:#8f2941}
 .secondary{background:#243b5c}
 .hidden{display:none!important}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat{background:#0b1729;padding:17px;border-radius:12px}
-.stat span{font-size:12px;color:#9aafca}
-.stat strong{display:block;font-size:25px;margin-top:7px}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap}
-.toolbar input{flex:1;min-width:180px}
+
+.login{
+ max-width:430px;
+ margin:9vh auto;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.stat{
+ background:#0b1729;
+ padding:17px;
+ border-radius:12px;
+}
+
+.stat span{
+ font-size:12px;
+ color:#9aafca;
+}
+
+.stat strong{
+ display:block;
+ font-size:25px;
+ margin-top:7px;
+}
+
+.toolbar{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+}
+
+.toolbar input{
+ flex:1;
+ min-width:180px;
+}
+
 .tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:850px}
-th,td{text-align:right;padding:13px;border-bottom:1px solid #283750;font-size:13px;vertical-align:top}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:850px;
+}
+
+th,td{
+ text-align:right;
+ padding:13px;
+ border-bottom:1px solid #283750;
+ font-size:13px;
+ vertical-align:top;
+}
+
 th{color:#9ecbff}
-td{max-width:260px;overflow-wrap:anywhere}
+
+td{
+ max-width:260px;
+ overflow-wrap:anywhere;
+}
+
 .status{min-width:130px}
-.actions{display:flex;gap:6px}
-#notice{padding:12px;border-radius:9px;margin:12px 0;display:none;white-space:pre-wrap}
-.ok{background:#123b30;color:#a5f3d0}
-.error{background:#421c2b;color:#ffc0ca}
-.login{max-width:430px;margin:9vh auto}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.container{padding:15px}}
+
+.actions{
+ display:flex;
+ gap:6px;
+ flex-wrap:wrap;
+}
+
+.notice{
+ padding:12px;
+ border-radius:9px;
+ margin:12px 0;
+ white-space:pre-wrap;
+ line-height:1.8;
+}
+
+.ok{
+ background:#123b30;
+ color:#a5f3d0;
+}
+
+.error{
+ background:#421c2b;
+ color:#ffc0ca;
+}
+
+.info{
+ background:#152d48;
+ color:#b8dcff;
+}
+
+.small{
+ font-size:12px;
+ color:#91a5c2;
+}
+
+.linkButton{
+ background:none;
+ color:#75baff;
+ padding:8px 0;
+ text-decoration:underline;
+}
+
+@media(max-width:650px){
+ .grid{grid-template-columns:1fr}
+ .container{padding:15px}
+ .panel{padding:16px}
+}
 </style>
 </head>
+
 <body>
+
 <div class="container">
 
 <header>
  <div class="logo">
   <img src="../images/evonex-logo.png" alt="EVONEX">
-  <div><h1>EVONEX</h1><small>ADMINISTRATION PANEL</small></div>
+  <div>
+   <h1>EVONEX</h1>
+   <small>ADMINISTRATION PANEL</small>
+  </div>
  </div>
+
  <button id="logout" class="danger hidden">خروج</button>
 </header>
 
+
+<!-- LOGIN -->
+
 <section id="login" class="panel login">
+
  <h1>ورود مدیر</h1>
  <p>برای ورود به پنل مدیریت احراز هویت شوید.</p>
+
  <form id="loginForm">
+
   <label>ایمیل</label>
-  <input id="email" type="email" required autocomplete="username">
+  <input
+   id="email"
+   type="email"
+   required
+   autocomplete="username"
+  >
+
   <label>رمز عبور</label>
-  <input id="password" type="password" required autocomplete="current-password">
-  <button id="loginBtn" style="width:100%">ورود به پنل</button>
+  <input
+   id="password"
+   type="password"
+   required
+   autocomplete="current-password"
+  >
+
+  <button id="loginBtn" style="width:100%">
+   ورود به پنل
+  </button>
+
  </form>
+
+ <button id="forgotPassword" class="linkButton">
+  فراموشی رمز عبور؟
+ </button>
+
+ <div id="loginNotice" class="hidden"></div>
+
 </section>
+
+
+<!-- PASSWORD RESET -->
+
+<section id="resetPanel" class="panel login hidden">
+
+ <h1>تغییر رمز عبور</h1>
+
+ <p>
+  رمز عبور جدید خود را وارد کنید.
+  پس از ذخیره، می‌توانید با رمز جدید وارد پنل شوید.
+ </p>
+
+ <form id="resetForm">
+
+  <label>رمز عبور جدید</label>
+
+  <input
+   id="newPassword"
+   type="password"
+   minlength="8"
+   autocomplete="new-password"
+   required
+   placeholder="حداقل ۸ کاراکتر"
+  >
+
+  <label>تکرار رمز عبور</label>
+
+  <input
+   id="confirmPassword"
+   type="password"
+   minlength="8"
+   autocomplete="new-password"
+   required
+   placeholder="رمز را دوباره وارد کنید"
+  >
+
+  <button id="resetBtn" style="width:100%">
+   ذخیره رمز جدید
+  </button>
+
+ </form>
+
+ <div id="resetNotice" class="hidden"></div>
+
+</section>
+
+
+<!-- DASHBOARD -->
 
 <section id="dashboard" class="hidden">
- <div class="panel">
-  <h1>داشبورد مدیریت</h1>
-  <p id="welcome">مدیریت درخواست‌های مشتریان EVONEX</p>
-  <div class="grid">
-   <div class="stat"><span>کل درخواست‌ها</span><strong id="total">۰</strong></div>
-   <div class="stat"><span>در انتظار بررسی</span><strong id="pending">۰</strong></div>
-   <div class="stat"><span>تکمیل‌شده</span><strong id="done">۰</strong></div>
-  </div>
- </div>
 
  <div class="panel">
-  <h1>درخواست‌های تماس</h1>
-  <div class="toolbar">
-   <input id="search" placeholder="جستجو نام، موبایل، ایمیل یا پیام...">
-   <button id="refresh">بروزرسانی</button>
-   <button id="csv" class="secondary">خروجی CSV</button>
+
+  <h1>داشبورد مدیریت</h1>
+
+  <p id="welcome">
+   مدیریت درخواست‌های مشتریان EVONEX
+  </p>
+
+  <div class="grid">
+
+   <div class="stat">
+    <span>کل درخواست‌ها</span>
+    <strong id="total">۰</strong>
+   </div>
+
+   <div class="stat">
+    <span>در انتظار بررسی</span>
+    <strong id="pending">۰</strong>
+   </div>
+
+   <div class="stat">
+    <span>تکمیل‌شده</span>
+    <strong id="done">۰</strong>
+   </div>
+
   </div>
-  <div id="notice"></div>
+
+ </div>
+
+
+ <div class="panel">
+
+  <h1>درخواست‌های تماس</h1>
+
+  <div class="toolbar">
+
+   <input
+    id="search"
+    placeholder="جستجو نام، موبایل، ایمیل یا پیام..."
+   >
+
+   <button id="refresh">بروزرسانی</button>
+
+   <button id="csv" class="secondary">
+    خروجی CSV
+   </button>
+
+  </div>
+
+  <div id="notice" class="hidden"></div>
+
   <div class="tablewrap">
+
    <table>
+
     <thead>
      <tr>
-      <th>نام</th><th>موبایل</th><th>ایمیل</th>
-      <th>پیام</th><th>تاریخ</th><th>وضعیت</th><th>عملیات</th>
+      <th>نام</th>
+      <th>موبایل</th>
+      <th>ایمیل</th>
+      <th>پیام</th>
+      <th>تاریخ</th>
+      <th>وضعیت</th>
+      <th>عملیات</th>
      </tr>
     </thead>
+
     <tbody id="rows"></tbody>
+
    </table>
+
   </div>
+
  </div>
+
 </section>
+
 </div>
 
+
 <script>
-const SUPABASE_URL="https://hwuligsvwldpkpjqbqkz.supabase.co";
-const SUPABASE_KEY="sb_publishable_9MQcV2MGa7zAaNLYZLEVeg_IZg3axS9";
 
-const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const $=id=>document.getElementById(id);
-let records=[];
+// =====================================
+// 1. SUPABASE CONFIGURATION
+// =====================================
 
-function notify(message,type="ok"){
- const n=$("notice");
- n.textContent=message;
- n.className=type;
- n.style.display="block";
+const $ = id => document.getElementById(id);
+
+if (!window.supabase || !window.EVONEX_SUPABASE) {
+ alert("خطا: کتابخانه یا تنظیمات Supabase بارگذاری نشده است.");
+ throw new Error("Supabase configuration missing");
 }
-function fa(n){return Number(n).toLocaleString("fa-IR")}
-function element(tag,text){
- const e=document.createElement(tag);
- e.textContent=text??"";
+
+const config = window.EVONEX_SUPABASE;
+
+if (!config.url || !config.anonKey) {
+ alert("آدرس یا کلید Supabase در config.js موجود نیست.");
+ throw new Error("Invalid Supabase configuration");
+}
+
+const db = window.supabase.createClient(
+ config.url,
+ config.anonKey,
+ {
+  auth: {
+   persistSession: true,
+   autoRefreshToken: true,
+   detectSessionInUrl: true
+  }
+ }
+);
+
+let records = [];
+let recoveryMode = false;
+
+
+// =====================================
+// 2. GENERAL FUNCTIONS
+// =====================================
+
+function fa(n) {
+ return Number(n).toLocaleString("fa-IR");
+}
+
+function element(tag, text) {
+ const e = document.createElement(tag);
+ e.textContent = text ?? "";
  return e;
 }
 
-async function checkSession(){
- const {data,error}=await db.auth.getSession();
- if(error){notify(error.message,"error");return}
- if(data.session) await enter(data.session.user);
+function showNotice(id, message, type="info") {
+ const box = $(id);
+
+ box.textContent = message;
+ box.className = "notice " + type;
+ box.classList.remove("hidden");
 }
 
-async function enter(user){
+function hideNotice(id) {
+ $(id).classList.add("hidden");
+}
+
+function showLogin() {
+ $("login").classList.remove("hidden");
+ $("dashboard").classList.add("hidden");
+ $("resetPanel").classList.add("hidden");
+ $("logout").classList.add("hidden");
+}
+
+function showDashboard(user) {
  $("login").classList.add("hidden");
+ $("resetPanel").classList.add("hidden");
  $("dashboard").classList.remove("hidden");
  $("logout").classList.remove("hidden");
- $("welcome").textContent="حساب: "+(user.email||"مدیر");
- await load();
+
+ $("welcome").textContent =
+  "حساب مدیر: " + (user.email || "مدیر");
+
+ load();
 }
 
-$("loginForm").addEventListener("submit",async e=>{
- e.preventDefault();
- const btn=$("loginBtn");
- btn.disabled=true;
- btn.textContent="در حال ورود...";
- const {data,error}=await db.auth.signInWithPassword({
-  email:$("email").value.trim(),
-  password:$("password").value
- });
- btn.disabled=false;
- btn.textContent="ورود به پنل";
- if(error){alert("ورود ناموفق: "+error.message);return}
- $("password").value="";
- await enter(data.user);
+function showResetPanel() {
+ recoveryMode = true;
+
+ $("login").classList.add("hidden");
+ $("dashboard").classList.add("hidden");
+ $("logout").classList.add("hidden");
+ $("resetPanel").classList.remove("hidden");
+
+ hideNotice("resetNotice");
+}
+
+
+// =====================================
+// 3. AUTHENTICATION EVENTS
+// =====================================
+
+db.auth.onAuthStateChange((event, session) => {
+
+ if (event === "PASSWORD_RECOVERY") {
+  showResetPanel();
+ }
+
 });
 
-$("logout").onclick=async()=>{
- await db.auth.signOut();
- location.reload();
-};
 
-async function load(){
- $("refresh").disabled=true;
- const {data,error}=await db.from("contact_requests")
-  .select("id,name,mobile,email,message,status,created_at")
-  .order("created_at",{ascending:false});
- $("refresh").disabled=false;
- if(error){
-  notify("خطا در دریافت درخواست‌ها: "+error.message,"error");
+// =====================================
+// 4. DETECT RECOVERY LINK
+// =====================================
+
+function isRecoveryLink() {
+
+ const hashParams = new URLSearchParams(
+  window.location.hash.substring(1)
+ );
+
+ const queryParams = new URLSearchParams(
+  window.location.search
+ );
+
+ return (
+  hashParams.get("type") === "recovery" ||
+  queryParams.get("type") === "recovery"
+ );
+
+}
+
+
+// =====================================
+// 5. CHECK EXISTING SESSION
+// =====================================
+
+async function checkSession() {
+
+ if (isRecoveryLink()) {
+  showResetPanel();
   return;
  }
- records=data||[];
- $("total").textContent=fa(records.length);
- $("pending").textContent=fa(records.filter(x=>x.status==="pending"||x.status==="new").length);
- $("done").textContent=fa(records.filter(x=>x.status==="done"||x.status==="completed").length);
- render();
-}
 
-function render(){
- const q=$("search").value.trim().toLowerCase();
- const list=records.filter(r=>
-  [r.name,r.mobile,r.email,r.message,r.status]
-  .some(v=>String(v??"").toLowerCase().includes(q))
- );
- const body=$("rows");
- body.replaceChildren();
+ const { data, error } = await db.auth.getSession();
 
- if(!list.length){
-  const tr=element("tr");
-  const td=element("td","درخواستی پیدا نشد.");
-  td.colSpan=7;tr.append(td);body.append(tr);return;
+ if (error) {
+  showLogin();
+  showNotice(
+   "loginNotice",
+   "خطا در بررسی نشست: " + error.message,
+   "error"
+  );
+  return;
  }
 
- list.forEach(r=>{
-  const tr=document.createElement("tr");
-  [r.name,r.mobile,r.email,r.message,
-   new Date(r.created_at).toLocaleString("fa-IR")
-  ].forEach(v=>tr.append(element("td",v)));
+ if (recoveryMode) {
+  showResetPanel();
+  return;
+ }
 
-  const statusTd=element("td");
-  const select=element("select");
-  select.className="status";
-  ["pending","new","in_progress","done","completed"].forEach(v=>{
-   const op=element("option",v);
-   op.value=v;
-   select.append(op);
-  });
-  select.value=r.status;
-  if(!["pending","new","in_progress","done","completed"].includes(r.status)){
-   select.add(element("option",r.status));
-   select.value=r.status;
-  }
-  statusTd.append(select);tr.append(statusTd);
+ if (data.session) {
+  showDashboard(data.session.user);
+ } else {
+  showLogin();
+ }
 
-  const actions=element("td");
-  const group=element("div");
-  group.className="actions";
-  const save=element("button","ذخیره");
-  save.onclick=()=>updateStatus(r,select.value,save);
-  const del=element("button","حذف");
-  del.className="danger";
-  del.onclick=()=>deleteRecord(r,del);
-  group.append(save,del);actions.append(group);tr.append(actions);
-  body.append(tr);
+}
+
+
+// =====================================
+// 6. LOGIN
+// =====================================
+
+$("loginForm").addEventListener("submit", async e => {
+
+ e.preventDefault();
+
+ hideNotice("loginNotice");
+
+ const btn = $("loginBtn");
+
+ btn.disabled = true;
+ btn.textContent = "در حال ورود...";
+
+ const { data, error } = await db.auth.signInWithPassword({
+
+  email: $("email").value.trim(),
+
+  password: $("password").value
+
  });
+
+ btn.disabled = false;
+ btn.textContent = "ورود به پنل";
+
+ if (error) {
+
+  showNotice(
+   "loginNotice",
+   "ورود ناموفق: " + error.message,
+   "error"
+  );
+
+  return;
+ }
+
+ $("password").value = "";
+
+ if (data.user) {
+  showDashboard(data.user);
+ }
+
+});
+
+
+// =====================================
+// 7. SEND PASSWORD RECOVERY EMAIL
+// =====================================
+
+$("forgotPassword").addEventListener("click", async () => {
+
+ hideNotice("loginNotice");
+
+ const email = $("email").value.trim();
+
+ if (!email) {
+
+  showNotice(
+   "loginNotice",
+   "ابتدا ایمیل مدیر را وارد کنید.",
+   "error"
+  );
+
+  $("email").focus();
+  return;
+ }
+
+ const btn = $("forgotPassword");
+
+ btn.disabled = true;
+ btn.textContent = "در حال ارسال ایمیل...";
+
+ const { error } = await db.auth.resetPasswordForEmail(
+  email,
+  {
+   redirectTo: window.location.origin + "/admin/"
+  }
+ );
+
+ btn.disabled = false;
+ btn.textContent = "فراموشی رمز عبور؟";
+
+ if (error) {
+
+  showNotice(
+   "loginNotice",
+   "خطا در ارسال ایمیل: " + error.message,
+   "error"
+  );
+
+  return;
+ }
+
+ showNotice(
+  "loginNotice",
+  "ایمیل بازیابی ارسال شد. صندوق ورودی و پوشه Spam را بررسی کنید.",
+  "ok"
+ );
+
+});
+
+
+// =====================================
+// 8. UPDATE PASSWORD
+// =====================================
+
+$("resetForm").addEventListener("submit", async e => {
+
+ e.preventDefault();
+
+ hideNotice("resetNotice");
+
+ const password = $("newPassword").value;
+ const confirm = $("confirmPassword").value;
+
+ const btn = $("resetBtn");
+
+ if (password.length < 8) {
+
+  showNotice(
+   "resetNotice",
+   "رمز عبور باید حداقل ۸ کاراکتر باشد.",
+   "error"
+  );
+
+  return;
+ }
+
+ if (password !== confirm) {
+
+  showNotice(
+   "resetNotice",
+   "دو رمز عبور با یکدیگر مطابقت ندارند.",
+   "error"
+  );
+
+  return;
+ }
+
+ btn.disabled = true;
+ btn.textContent = "در حال ذخیره رمز...";
+
+ const { data, error } = await db.auth.updateUser({
+  password: password
+ });
+
+ btn.disabled = false;
+ btn.textContent = "ذخیره رمز جدید";
+
+ if (error) {
+
+  showNotice(
+   "resetNotice",
+   "تغییر رمز انجام نشد: " + error.message,
+   "error"
+  );
+
+  return;
+ }
+
+ showNotice(
+  "resetNotice",
+  "رمز عبور با موفقیت تغییر کرد. اکنون می‌توانید وارد شوید.",
+  "ok"
+ );
+
+ $("resetForm").reset();
+
+ recoveryMode = false;
+
+ // پاک کردن اطلاعات توکن بازیابی از آدرس مرورگر
+ window.history.replaceState(
+  {},
+  document.title,
+  window.location.pathname
+ );
+
+ await db.auth.signOut();
+
+ setTimeout(() => {
+  showLogin();
+
+  showNotice(
+   "loginNotice",
+   "رمز جدید ثبت شده است. با رمز جدید وارد شوید.",
+   "ok"
+  );
+
+ }, 1800);
+
+});
+
+
+// =====================================
+// 9. LOGOUT
+// =====================================
+
+$("logout").addEventListener("click", async () => {
+
+ const { error } = await db.auth.signOut();
+
+ if (error) {
+  alert("خطا در خروج: " + error.message);
+  return;
+ }
+
+ records = [];
+ showLogin();
+
+});
+
+
+// =====================================
+// 10. LOAD CONTACT REQUESTS
+// =====================================
+
+async function load() {
+
+ $("refresh").disabled = true;
+ $("refresh").textContent = "در حال دریافت...";
+
+ const { data, error } = await db
+  .from("contact_requests")
+  .select("id,name,mobile,email,message,status,created_at")
+  .order("created_at", { ascending: false });
+
+ $("refresh").disabled = false;
+ $("refresh").textContent = "بروزرسانی";
+
+ if (error) {
+
+  showNotice(
+   "notice",
+   "خطا در دریافت درخواست‌ها: " + error.message,
+   "error"
+  );
+
+  return;
+ }
+
+ records = data || [];
+
+ $("total").textContent = fa(records.length);
+
+ $("pending").textContent = fa(
+  records.filter(x =>
+   x.status === "pending" ||
+   x.status === "new"
+  ).length
+ );
+
+ $("done").textContent = fa(
+  records.filter(x =>
+   x.status === "done" ||
+   x.status === "completed"
+  ).length
+ );
+
+ hideNotice("notice");
+
+ render();
+
 }
 
-async function updateStatus(r,status,btn){
- if(!confirm("وضعیت این درخواست تغییر کند؟"))return;
- btn.disabled=true;
- const {error}=await db.from("contact_requests")
-  .update({status}).eq("id",r.id);
- btn.disabled=false;
- if(error){notify("خطا: "+error.message,"error");return}
- notify("وضعیت با موفقیت ذخیره شد.");
+
+// =====================================
+// 11. RENDER TABLE
+// =====================================
+
+function render() {
+
+ const q = $("search").value.trim().toLowerCase();
+
+ const list = records.filter(r =>
+  [
+   r.name,
+   r.mobile,
+   r.email,
+   r.message,
+   r.status
+  ].some(v =>
+   String(v ?? "").toLowerCase().includes(q)
+  )
+ );
+
+ const body = $("rows");
+
+ body.replaceChildren();
+
+ if (!list.length) {
+
+  const tr = element("tr");
+  const td = element("td", "درخواستی پیدا نشد.");
+
+  td.colSpan = 7;
+
+  tr.append(td);
+  body.append(tr);
+
+  return;
+ }
+
+ list.forEach(r => {
+
+  const tr = document.createElement("tr");
+
+  [
+   r.name,
+   r.mobile,
+   r.email,
+   r.message,
+   new Date(r.created_at).toLocaleString("fa-IR")
+  ].forEach(v => {
+   tr.append(element("td", v));
+  });
+
+
+  // STATUS SELECT
+
+  const statusTd = element("td");
+
+  const select = element("select");
+
+  select.className = "status";
+
+  const statuses = [
+   "pending",
+   "new",
+   "in_progress",
+   "done",
+   "completed"
+  ];
+
+  statuses.forEach(v => {
+
+   const op = element("option", v);
+   op.value = v;
+
+   select.append(op);
+
+  });
+
+  if (!statuses.includes(r.status)) {
+
+   const op = element("option", r.status);
+   op.value = r.status;
+
+   select.append(op);
+
+  }
+
+  select.value = r.status;
+
+  statusTd.append(select);
+  tr.append(statusTd);
+
+
+  // ACTIONS
+
+  const actions = element("td");
+
+  const group = element("div");
+
+  group.className = "actions";
+
+  const save = element("button", "ذخیره");
+
+  save.onclick = () => updateStatus(r, select.value, save);
+
+  const del = element("button", "حذف");
+
+  del.className = "danger";
+
+  del.onclick = () => deleteRecord(r, del);
+
+  group.append(save, del);
+
+  actions.append(group);
+
+  tr.append(actions);
+
+  body.append(tr);
+
+ });
+
+}
+
+
+// =====================================
+// 12. UPDATE REQUEST STATUS
+// =====================================
+
+async function updateStatus(r, status, btn) {
+
+ if (!confirm("وضعیت این درخواست تغییر کند؟")) {
+  return;
+ }
+
+ btn.disabled = true;
+
+ const { error } = await db
+  .from("contact_requests")
+  .update({ status: status })
+  .eq("id", r.id);
+
+ btn.disabled = false;
+
+ if (error) {
+
+  showNotice(
+   "notice",
+   "خطا در تغییر وضعیت: " + error.message,
+   "error"
+  );
+
+  return;
+ }
+
+ showNotice(
+  "notice",
+  "وضعیت درخواست با موفقیت ذخیره شد.",
+  "ok"
+ );
+
  await load();
+
 }
 
-async function deleteRecord(r,btn){
- if(!confirm("این درخواست برای همیشه حذف شود؟"))return;
- btn.disabled=true;
- const {error}=await db.from("contact_requests")
-  .delete().eq("id",r.id);
- btn.disabled=false;
- if(error){notify("خطا در حذف: "+error.message,"error");return}
- notify("درخواست حذف شد.");
+
+// =====================================
+// 13. DELETE REQUEST
+// =====================================
+
+async function deleteRecord(r, btn) {
+
+ if (!confirm("این درخواست برای همیشه حذف شود؟")) {
+  return;
+ }
+
+ btn.disabled = true;
+
+ const { error } = await db
+  .from("contact_requests")
+  .delete()
+  .eq("id", r.id);
+
+ btn.disabled = false;
+
+ if (error) {
+
+  showNotice(
+   "notice",
+   "خطا در حذف درخواست: " + error.message,
+   "error"
+  );
+
+  return;
+ }
+
+ showNotice(
+  "notice",
+  "درخواست با موفقیت حذف شد.",
+  "ok"
+ );
+
  await load();
+
 }
 
-function csvValue(v){
- return '"'+String(v??"").replace(/"/g,'""')+'"';
+
+// =====================================
+// 14. CSV EXPORT
+// =====================================
+
+function csvValue(v) {
+
+ let value = String(v ?? "");
+
+ // جلوگیری از CSV Formula Injection
+ if (/^[\s]*[=+\-@]/.test(value)) {
+  value = "'" + value;
+ }
+
+ return '"' + value.replace(/"/g, '""') + '"';
+
 }
-$("csv").onclick=()=>{
- const cols=["id","name","mobile","email","message","status","created_at"];
- const csv=[
+
+$("csv").addEventListener("click", () => {
+
+ const cols = [
+  "id",
+  "name",
+  "mobile",
+  "email",
+  "message",
+  "status",
+  "created_at"
+ ];
+
+ const csv = [
+
   cols.map(csvValue).join(","),
-  ...records.map(r=>cols.map(c=>csvValue(r[c])).join(","))
- ].join("\r\n");
- const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});
- const url=URL.createObjectURL(blob);
- const a=element("a");
- a.href=url;a.download="evonex-requests.csv";
- a.click();URL.revokeObjectURL(url);
-};
 
-$("search").addEventListener("input",render);
-$("refresh").onclick=load;
+  ...records.map(r =>
+   cols.map(c => csvValue(r[c])).join(",")
+  )
+
+ ].join("\r\n");
+
+ const blob = new Blob(
+  ["\ufeff" + csv],
+  { type: "text/csv;charset=utf-8" }
+ );
+
+ const url = URL.createObjectURL(blob);
+
+ const a = document.createElement("a");
+
+ a.href = url;
+ a.download = "evonex-requests.csv";
+
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+
+ setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+});
+
+
+// =====================================
+// 15. SEARCH AND REFRESH
+// =====================================
+
+$("search").addEventListener("input", render);
+
+$("refresh").addEventListener("click", load);
+
+
+// =====================================
+// 16. START APPLICATION
+// =====================================
 
 checkSession();
+
 </script>
+
 </body>
 </html>
