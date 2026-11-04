@@ -2881,12 +2881,15 @@
 
 
     /* ==========================================================
-       SUPABASE
+       SUPABASE — CONTACT FORM
     ========================================================== */
 
+    // Supabase project URL
     const SUPABASE_URL =
-        "YOUR_SUPABASE_URL";
+        "https://hwuligsvwldpkpjqbqkz.supabase.co";
 
+    // Replace this placeholder with the project's Publishable Key.
+    // Never use a secret key or service_role key in frontend code.
     const SUPABASE_PUBLISHABLE_KEY =
         "YOUR_SUPABASE_PUBLISHABLE_KEY";
 
@@ -2897,114 +2900,150 @@
     const formStatus =
         document.getElementById("formStatus");
 
-
-    contactForm.addEventListener("submit", async function(event) {
-
-        event.preventDefault();
+    const submitButton =
+        contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
 
-        const lang =
-            window.currentLanguage || "fa";
+    if (contactForm && formStatus) {
 
-        const dictionary =
-            translations[lang];
+        contactForm.addEventListener("submit", async function(event) {
 
+            event.preventDefault();
 
-        const name =
-            document.getElementById("name").value.trim();
+            const lang =
+                window.currentLanguage || "fa";
 
-        const mobile =
-            document.getElementById("mobile").value.trim();
-
-        const email =
-            document.getElementById("email").value.trim();
-
-        const message =
-            document.getElementById("message").value.trim();
+            const dictionary =
+                translations[lang] || translations.fa;
 
 
-        if (!name || !mobile || !email || !message) {
+            const name =
+                document.getElementById("name").value.trim();
 
-            formStatus.textContent =
-                dictionary.form_required;
+            const mobile =
+                document.getElementById("mobile").value.trim();
 
-            return;
-        }
+            const email =
+                document.getElementById("email").value.trim();
 
-
-        const mobileRegex =
-            /^09\d{9}$/;
-
-
-        if (!mobileRegex.test(mobile)) {
-
-            formStatus.textContent =
-                dictionary.form_mobile_error;
-
-            return;
-        }
+            const message =
+                document.getElementById("message").value.trim();
 
 
-        formStatus.textContent =
-            dictionary.form_sending;
+            if (!name || !mobile || !email || !message) {
+
+                formStatus.textContent =
+                    dictionary.form_required;
+
+                return;
+            }
 
 
-        try {
-
-            const response =
-                await fetch(
-                    `${SUPABASE_URL}/rest/v1/contact_requests`,
-                    {
-                        method:"POST",
-
-                        headers:{
-                            "Content-Type":"application/json",
-
-                            "apikey":
-                                SUPABASE_PUBLISHABLE_KEY,
-
-                            "Authorization":
-                                `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-
-                            "Prefer":"return=minimal"
-                        },
-
-                        body:JSON.stringify({
-
-                            name,
-                            mobile,
-                            email,
-                            message,
-
-                            status:"جدید"
-
-                        })
-                    }
-                );
+            const mobileRegex =
+                /^09\\d{9}$/;
 
 
-            if (!response.ok) {
-                throw new Error("Supabase request failed");
+            if (!mobileRegex.test(mobile)) {
+
+                formStatus.textContent =
+                    dictionary.form_mobile_error;
+
+                return;
+            }
+
+
+            if (
+                !SUPABASE_URL ||
+                SUPABASE_URL.includes("YOUR_SUPABASE_URL") ||
+                !SUPABASE_PUBLISHABLE_KEY ||
+                SUPABASE_PUBLISHABLE_KEY === "YOUR_SUPABASE_PUBLISHABLE_KEY"
+            ) {
+
+                console.error("Supabase URL or Publishable Key is not configured.");
+
+                formStatus.textContent =
+                    dictionary.form_error;
+
+                return;
             }
 
 
             formStatus.textContent =
-                dictionary.form_success;
+                dictionary.form_sending;
+
+            if (submitButton) {
+                submitButton.disabled = true;
+            }
 
 
-            contactForm.reset();
+            try {
+
+                const response =
+                    await fetch(
+                        `${SUPABASE_URL}/rest/v1/contact_requests`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json",
+                                "apikey": SUPABASE_PUBLISHABLE_KEY,
+                                "Prefer": "return=minimal"
+                            },
+
+                            body: JSON.stringify({
+                                name,
+                                mobile,
+                                email,
+                                message
+                            })
+                        }
+                    );
 
 
-        } catch (error) {
+                if (!response.ok) {
 
-            console.error(error);
+                    const errorDetails = await response.text();
 
-            formStatus.textContent =
-                dictionary.form_error;
+                    console.error(
+                        "Supabase error:",
+                        response.status,
+                        errorDetails
+                    );
 
-        }
+                    throw new Error(
+                        `Supabase request failed with status ${response.status}`
+                    );
+                }
 
-    });
+
+                formStatus.textContent =
+                    dictionary.form_success;
+
+                contactForm.reset();
+
+
+            } catch (error) {
+
+                console.error("Contact form submission failed:", error);
+
+                formStatus.textContent =
+                    dictionary.form_error;
+
+            } finally {
+
+                if (submitButton) {
+                    submitButton.disabled = false;
+                }
+
+            }
+
+        });
+
+    } else {
+
+        console.error("Contact form elements were not found in the page.");
+
+    }
 
 </script>
 
